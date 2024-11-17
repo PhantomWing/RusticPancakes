@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "rusticpancakes:batter"
+    },
+    "M": {
+      "tag": "c:foods/milk"
+    },
+    "P": {
+      "tag": "rusticpancakes:cherry_blossom_ingredients"
+    },
+    "X": {
+      "item": "minecraft:sugar"
+    },
+    "Y": {
+      "item": "minecraft:bowl"
+    }
+  },
+  "pattern": [
+    "XMX",
+    "PBP",
+    "XYX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "rusticpancakes:cherry_blossom_pancakes"
+  }
+}

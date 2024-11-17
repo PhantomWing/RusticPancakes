@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_batter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "rusticpancakes:batter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "rusticpancakes:cherry_blossom_pancakes"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_batter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "rusticpancakes:cherry_blossom_pancakes"
+    ]
+  }
+}
