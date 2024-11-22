@@ -1,6 +1,7 @@
 package com.phantomwing.rusticpancakes.datagen;
 
 import com.phantomwing.rusticpancakes.RusticPancakes;
+import com.phantomwing.rusticpancakes.tags.CommonTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -24,5 +25,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 Items.CHERRY_LEAVES,
                 Items.CHERRY_SAPLING
         );
+
+        this.tag(CommonTags.FOODS_MILK).add(Items.MILK_BUCKET);
     }
 }

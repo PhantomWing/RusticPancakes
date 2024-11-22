@@ -5,9 +5,6 @@
     "B": {
       "item": "rusticpancakes:batter"
     },
-    "M": {
-      "tag": "c:foods/milk"
-    },
     "P": {
       "tag": "rusticpancakes:cherry_blossom_ingredients"
     },
@@ -19,7 +16,7 @@
     }
   },
   "pattern": [
-    "XMX",
+    "XPX",
     "PBP",
     "XYX"
   ],

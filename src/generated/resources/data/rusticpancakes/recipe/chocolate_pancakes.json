@@ -8,9 +8,6 @@
     "C": {
       "item": "minecraft:cocoa_beans"
     },
-    "M": {
-      "tag": "c:foods/milk"
-    },
     "X": {
       "item": "minecraft:sugar"
     },
@@ -19,7 +16,7 @@
     }
   },
   "pattern": [
-    "XMX",
+    "XCX",
     "CBC",
     "XYX"
   ],

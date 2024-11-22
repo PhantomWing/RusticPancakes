@@ -6,7 +6,7 @@
       "item": "rusticpancakes:batter"
     },
     "L": {
-      "tag": "c:foods/leafy_green"
+      "item": "minecraft:sugar"
     },
     "V": {
       "type": "neoforge:difference",
