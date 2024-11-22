@@ -3,14 +3,14 @@ package com.phantomwing.rusticpancakes.datagen;
 import com.phantomwing.rusticpancakes.RusticPancakes;
 import com.phantomwing.rusticpancakes.block.ModBlocks;
 import com.phantomwing.rusticpancakes.block.custom.PancakeBlock;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     private static final int DEFAULT_ANGLE_OFFSET = 180;
@@ -30,8 +30,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void pancakeBlock(Block block) {
         getVariantBuilder(block)
                 .forAllStates(state -> {
-                            int servings = state.getValue(PancakeBlock.SERVINGS);
-                            String suffix = "_stage" + servings;
+                            int bites = state.getValue(PancakeBlock.SERVINGS);
+                            String suffix = "_stage" + bites;
                             return ConfiguredModel.builder()
                                     .modelFile(existingModel(blockName(block) + suffix))
                                     .rotationY(((int) state.getValue(PancakeBlock.FACING).toYRot() + DEFAULT_ANGLE_OFFSET) % 360)
@@ -41,14 +41,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private String blockName(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block).getPath();
+        return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
 
-    private ResourceLocation resourceBlock(String path) {
-        return ResourceLocation.fromNamespaceAndPath(RusticPancakes.MOD_ID, "block/" + path);
+    public ResourceLocation resourceBlock(String path) {
+        return new ResourceLocation(RusticPancakes.MOD_ID, "block/" + path);
     }
 
-    private ModelFile existingModel(String path) {
+    public ModelFile existingModel(String path) {
         return new ModelFile.ExistingModelFile(resourceBlock(path), models().existingFileHelper);
     }
 }

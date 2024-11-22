@@ -1,14 +1,14 @@
 package com.phantomwing.rusticpancakes.datagen;
 
 import com.phantomwing.rusticpancakes.RusticPancakes;
-import com.phantomwing.rusticpancakes.tags.CommonTags;
+import com.phantomwing.rusticpancakes.tags.ForgeTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,6 +26,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 Items.CHERRY_SAPLING
         );
 
-        this.tag(CommonTags.FOODS_MILK).add(Items.MILK_BUCKET);
+        // Milk
+        this.tag(ForgeTags.MILK).add(Items.MILK_BUCKET);
+
+        // Handle vegetables
+        this.tag(ForgeTags.VEGETABLES)
+            .addTag(ForgeTags.VEGETABLES_BEETROOT)
+            .addTag(ForgeTags.VEGETABLES_CARROT)
+            .addTag(ForgeTags.VEGETABLES_POTATO);
+        tag(ForgeTags.VEGETABLES_BEETROOT).add(Items.BEETROOT);
+        tag(ForgeTags.VEGETABLES_CARROT).add(Items.CARROT);
+        tag(ForgeTags.VEGETABLES_POTATO).add(Items.POTATO);
     }
 }

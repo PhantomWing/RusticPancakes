@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_milk_bucket": {
+    "has_batter": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:milk_bucket"
+            "items": [
+              "rusticpancakes:batter"
+            ]
           }
         ]
       },
@@ -13,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:batter"
+        "recipe": "rusticpancakes:cherry_blossom_pancakes"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_milk_bucket"
+      "has_batter",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "rusticpancakes:batter"
+      "rusticpancakes:cherry_blossom_pancakes"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

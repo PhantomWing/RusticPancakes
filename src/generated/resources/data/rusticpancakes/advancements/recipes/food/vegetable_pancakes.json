@@ -5,7 +5,9 @@
       "conditions": {
         "items": [
           {
-            "items": "rusticpancakes:batter"
+            "items": [
+              "rusticpancakes:batter"
+            ]
           }
         ]
       },
@@ -13,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:honey_pancakes"
+        "recipe": "rusticpancakes:vegetable_pancakes"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_batter"
+      "has_batter",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "rusticpancakes:honey_pancakes"
+      "rusticpancakes:vegetable_pancakes"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

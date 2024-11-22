@@ -5,23 +5,23 @@
     "B": {
       "item": "rusticpancakes:batter"
     },
-    "P": {
-      "tag": "rusticpancakes:cherry_blossom_ingredients"
-    },
-    "X": {
+    "L": {
       "item": "minecraft:sugar"
+    },
+    "V": {
+      "tag": "forge:vegetables"
     },
     "Y": {
       "item": "minecraft:bowl"
     }
   },
   "pattern": [
-    "XPX",
-    "PBP",
-    "XYX"
+    "LVL",
+    "VBV",
+    "LYL"
   ],
   "result": {
-    "count": 1,
-    "id": "rusticpancakes:cherry_blossom_pancakes"
-  }
+    "item": "rusticpancakes:vegetable_pancakes"
+  },
+  "show_notification": true
 }

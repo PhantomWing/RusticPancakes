@@ -12,7 +12,7 @@ public class ModTags {
     // Block tags
     public static class Blocks {
         private static TagKey<Block> tag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(RusticPancakes.MOD_ID, name));
+            return BlockTags.create(new ResourceLocation(RusticPancakes.MOD_ID, name));
         }
     }
 
@@ -21,7 +21,7 @@ public class ModTags {
         public static final TagKey<Item> CHERRY_BLOSSOM_INGREDIENTS = tag("cherry_blossom_ingredients");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(RusticPancakes.MOD_ID, name));
+            return ItemTags.create(new ResourceLocation(RusticPancakes.MOD_ID, name));
         }
     }
 }

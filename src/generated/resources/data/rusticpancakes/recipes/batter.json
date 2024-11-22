@@ -6,10 +6,10 @@
       "item": "minecraft:bowl"
     },
     {
-      "tag": "c:foods/milk"
+      "tag": "forge:milk"
     },
     {
-      "tag": "c:eggs"
+      "tag": "forge:eggs"
     },
     {
       "item": "minecraft:wheat"
@@ -19,7 +19,6 @@
     }
   ],
   "result": {
-    "count": 1,
-    "id": "rusticpancakes:batter"
+    "item": "rusticpancakes:batter"
   }
 }

@@ -1,11 +1,13 @@
 package com.phantomwing.rusticpancakes.block.custom;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -53,7 +55,7 @@ public class PancakeBlock extends Block {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.isClientSide) {
             if (consumeServing(level, pos, state, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
@@ -76,10 +78,10 @@ public class PancakeBlock extends Block {
         } else {
             // Apply food effect to the player
             if (foodProperties != null) {
-                playerIn.getFoodData().eat(foodProperties);
-                for (FoodProperties.PossibleEffect effect : foodProperties.effects()) {
-                    if (!level.isClientSide && effect != null && level.random.nextFloat() < effect.probability()) {
-                        playerIn.addEffect(effect.effect());
+                playerIn.getFoodData().eat(foodProperties.getNutrition(), foodProperties.getSaturationModifier());
+                for (Pair<MobEffectInstance, Float> pair: foodProperties.getEffects()) {
+                    if (!level.isClientSide && pair.getFirst() != null && level.random.nextFloat() < pair.getSecond()) {
+                        playerIn.addEffect(new MobEffectInstance(pair.getFirst()));
                     }
                 }
             }
@@ -135,7 +137,7 @@ public class PancakeBlock extends Block {
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, PathComputationType type) {
+    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
         return false;
     }
 }
