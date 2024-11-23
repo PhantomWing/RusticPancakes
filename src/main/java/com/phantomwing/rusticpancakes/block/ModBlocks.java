@@ -3,25 +3,30 @@ package com.phantomwing.rusticpancakes.block;
 import com.phantomwing.rusticpancakes.RusticPancakes;
 import com.phantomwing.rusticpancakes.block.custom.PancakeBlock;
 import com.phantomwing.rusticpancakes.food.FoodValues;
-import net.minecraft.world.level.block.*;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(RusticPancakes.MOD_ID);
-
     // Pancake blocks
-    public static final DeferredBlock<Block> HONEY_PANCAKES = BLOCKS.register("honey_pancakes",
-            () -> new PancakeBlock(FoodValues.HONEY_PANCAKE, Block.Properties.ofFullCopy(Blocks.CAKE).sound(SoundType.WOOD)));
-    public static final DeferredBlock<Block> CHOCOLATE_PANCAKES = BLOCKS.register("chocolate_pancakes",
-            () -> new PancakeBlock(FoodValues.CHOCOLATE_PANCAKE, Block.Properties.ofFullCopy(Blocks.CAKE).sound(SoundType.WOOD)));
-    public static final DeferredBlock<Block> CHERRY_BLOSSOM_PANCAKES = BLOCKS.register("cherry_blossom_pancakes",
-            () -> new PancakeBlock(FoodValues.CHERRY_BLOSSOM_PANCAKE, Block.Properties.ofFullCopy(Blocks.CAKE).sound(SoundType.WOOD)));
-    public static final DeferredBlock<Block> VEGETABLE_PANCAKES = BLOCKS.register("vegetable_pancakes",
-            () -> new PancakeBlock(FoodValues.VEGETABLE_PANCAKE, Block.Properties.ofFullCopy(Blocks.CAKE).sound(SoundType.WOOD)));
+    public static final Block HONEY_PANCAKES = registerBlock("honey_pancakes",
+            new PancakeBlock(FoodValues.HONEY_PANCAKE, AbstractBlock.Settings.copy(Blocks.CAKE).sounds(BlockSoundGroup.WOOD)));
+    public static final Block CHOCOLATE_PANCAKES = registerBlock("chocolate_pancakes",
+            new PancakeBlock(FoodValues.CHOCOLATE_PANCAKE, AbstractBlock.Settings.copy(Blocks.CAKE).sounds(BlockSoundGroup.WOOD)));
+    public static final Block CHERRY_BLOSSOM_PANCAKES = registerBlock("cherry_blossom_pancakes",
+            new PancakeBlock(FoodValues.CHERRY_BLOSSOM_PANCAKE, AbstractBlock.Settings.copy(Blocks.CAKE).sounds(BlockSoundGroup.WOOD)));
+    public static final Block VEGETABLE_PANCAKES = registerBlock("vegetable_pancakes",
+            new PancakeBlock(FoodValues.VEGETABLE_PANCAKE, AbstractBlock.Settings.copy(Blocks.CAKE).sounds(BlockSoundGroup.WOOD)));
 
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
+    private static Block registerBlock(String name, Block block) {
+        return Registry.register(Registries.BLOCK, Identifier.of(RusticPancakes.MOD_ID, name), block);
+    }
+
+    public static void registerModBlocks() {
+        RusticPancakes.LOGGER.info("Registering blocks for " + RusticPancakes.MOD_ID);
     }
 }

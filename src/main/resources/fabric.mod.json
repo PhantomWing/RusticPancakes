@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "rusticpancakes",
+  "version": "${version}",
+  "name": "Rustic Pancakes",
+  "description": "A rustic mod that lets you bake different types of Pancakes, and place them in your world!",
+  "authors": [
+    "PhantomWing"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/rustic-pancakes",
+    "sources": "https://github.com/PhantomWing/RusticPancakes"
+  },
+  "license": "CC0-1.0",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.phantomwing.rusticpancakes.RusticPancakes"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.7",
+    "minecraft": ">=1.21 <=1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

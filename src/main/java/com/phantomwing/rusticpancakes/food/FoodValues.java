@@ -1,26 +1,26 @@
 package com.phantomwing.rusticpancakes.food;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
+import net.minecraft.component.type.FoodComponent;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 
 public class FoodValues {
     // Cooking products
-    public static final FoodProperties BATTER = (new FoodProperties.Builder())
+    public static final FoodComponent BATTER = (new FoodComponent.Builder())
             .nutrition(2).saturationModifier(0.2F)
-            .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F).fast().build();
+            .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 600, 0), 0.3F).snack().build();
 
     // Pancakes
-    public static final FoodProperties HONEY_PANCAKE = (new FoodProperties.Builder())
+    public static final FoodComponent HONEY_PANCAKE = (new FoodComponent.Builder())
             .nutrition(4).saturationModifier(0.6F)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0, false, false), 1.0F).build();
-    public static final FoodProperties CHOCOLATE_PANCAKE = (new FoodProperties.Builder())
+            .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 0, false, false), 1.0F).build();
+    public static final FoodComponent CHOCOLATE_PANCAKE = (new FoodComponent.Builder())
             .nutrition(4).saturationModifier(0.6F)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0, false, false), 1.0F).build();
-    public static final FoodProperties CHERRY_BLOSSOM_PANCAKE = (new FoodProperties.Builder())
+            .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 0, false, false), 1.0F).build();
+    public static final FoodComponent CHERRY_BLOSSOM_PANCAKE = (new FoodComponent.Builder())
             .nutrition(4).saturationModifier(0.6F)
-            .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F).build();
-    public static final FoodProperties VEGETABLE_PANCAKE = (new FoodProperties.Builder())
+            .statusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F).build();
+    public static final FoodComponent VEGETABLE_PANCAKE = (new FoodComponent.Builder())
             .nutrition(4).saturationModifier(0.6F)
-            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0, false, false), 1.0F).build();
+            .statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1200, 0, false, false), 1.0F).build();
 }
