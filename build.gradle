@@ -1,10 +1,7 @@
 plugins {
     id 'eclipse'
-    id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
 version = mod_version
@@ -18,9 +15,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: mapping_channel, version: mapping_version
-
-    copyIdeResources = true
+    mappings channel: 'official', version: "${minecraft_version}"
 
     runs {
         client {
@@ -41,9 +36,7 @@ minecraft {
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-
             property 'forge.enabledGameTestNamespaces', mod_id
 
             mods {
@@ -125,6 +118,7 @@ def replaceProperties = [
         mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
         mod_authors: mod_authors, mod_description: mod_description
 ]
+
 processResources {
     inputs.properties replaceProperties
     replaceProperties.put 'project', project

@@ -18,8 +18,6 @@ public class ModBlocks {
             () -> new PancakeBlock(FoodValues.HONEY_PANCAKE, Block.Properties.copy(Blocks.CAKE).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CHOCOLATE_PANCAKES = BLOCKS.register("chocolate_pancakes",
             () -> new PancakeBlock(FoodValues.CHOCOLATE_PANCAKE, Block.Properties.copy(Blocks.CAKE).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> CHERRY_BLOSSOM_PANCAKES = BLOCKS.register("cherry_blossom_pancakes",
-            () -> new PancakeBlock(FoodValues.CHERRY_BLOSSOM_PANCAKE, Block.Properties.copy(Blocks.CAKE).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> VEGETABLE_PANCAKES = BLOCKS.register("vegetable_pancakes",
             () -> new PancakeBlock(FoodValues.VEGETABLE_PANCAKE, Block.Properties.copy(Blocks.CAKE).sound(SoundType.WOOD)));
 

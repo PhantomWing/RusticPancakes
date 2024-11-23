@@ -17,9 +17,6 @@ public class FoodValues {
     public static final FoodProperties CHOCOLATE_PANCAKE = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.6F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0, false, false), 1.0F).build();
-    public static final FoodProperties CHERRY_BLOSSOM_PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationMod(0.6F)
-            .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F).build();
     public static final FoodProperties VEGETABLE_PANCAKE = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.6F)
             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0, false, false), 1.0F).build();

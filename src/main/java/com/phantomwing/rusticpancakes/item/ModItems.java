@@ -30,12 +30,11 @@ public class ModItems {
     // Pancakes
     public static final RegistryObject<Item> HONEY_PANCAKES = registerBlockWithTab(ModBlocks.HONEY_PANCAKES, bowlItem());
     public static final RegistryObject<Item> CHOCOLATE_PANCAKES = registerBlockWithTab(ModBlocks.CHOCOLATE_PANCAKES, bowlItem());
-    public static final RegistryObject<Item> CHERRY_BLOSSOM_PANCAKES = registerBlockWithTab(ModBlocks.CHERRY_BLOSSOM_PANCAKES, bowlItem());
     public static final RegistryObject<Item> VEGETABLE_PANCAKES = registerBlockWithTab(ModBlocks.VEGETABLE_PANCAKES, bowlItem());
 
     // Helper functions
     public static Item.Properties baseItem() {
-        return new Item.Properties();
+        return new Item.Properties().tab(RusticPancakes.CREATIVE_TAB);
     }
 
 
