@@ -1,3 +1,6 @@
-// 1.21	2024-11-19T21:46:17.5682142	Tags for minecraft:item mod id rusticpancakes
+// 1.21	2025-02-15T22:33:48.1436944	Tags for minecraft:item mod id rusticpancakes
 edb5947f84984a39ab47c98c6fb0b3c3a9a8cc39 data/c/tags/item/foods/milk.json
+fb20556192c9d25a9791b8eb05837ad23fad883d data/c/tags/item/foods/pumpkin.json
 c2122a7767958a3c19ee1e3fe408f30bf692f325 data/rusticpancakes/tags/item/cherry_blossom_ingredients.json
+6aa9c4327eccb5f3312ec4413b7e4e9158b18911 data/rusticpancakes/tags/item/syrup.json
+144bb192b5dbf1871ba485964db6edb86dccdbb0 data/rusticpancakes/tags/item/syrup_ingredients.json

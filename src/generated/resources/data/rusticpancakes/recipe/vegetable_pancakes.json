@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "B": {
+      "item": "minecraft:bowl"
+    },
+    "M": {
       "item": "rusticpancakes:batter"
     },
-    "L": {
-      "item": "minecraft:sugar"
+    "T": {
+      "tag": "c:foods/milk"
     },
-    "V": {
+    "X": {
       "type": "neoforge:difference",
       "base": {
         "tag": "c:foods/vegetable"
@@ -18,13 +21,19 @@
       }
     },
     "Y": {
-      "item": "minecraft:bowl"
+      "type": "neoforge:difference",
+      "base": {
+        "tag": "c:foods/vegetable"
+      },
+      "subtracted": {
+        "item": "minecraft:melon_slice"
+      }
     }
   },
   "pattern": [
-    "LVL",
-    "VBV",
-    "LYL"
+    " T ",
+    "XMX",
+    "YBY"
   ],
   "result": {
     "count": 1,

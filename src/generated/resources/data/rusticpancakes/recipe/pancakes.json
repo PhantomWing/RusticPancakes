@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "M": {
+      "item": "rusticpancakes:batter"
+    },
+    "T": {
+      "tag": "rusticpancakes:syrup"
+    },
+    "X": {
+      "item": "minecraft:sugar"
+    },
+    "Y": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    " T ",
+    "XMX",
+    "YBY"
+  ],
+  "result": {
+    "count": 1,
+    "id": "rusticpancakes:pancakes"
+  }
+}

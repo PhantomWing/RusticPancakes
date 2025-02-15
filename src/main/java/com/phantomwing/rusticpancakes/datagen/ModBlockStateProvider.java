@@ -21,10 +21,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        pancakeBlock(ModBlocks.PANCAKES.get());
         pancakeBlock(ModBlocks.HONEY_PANCAKES.get());
         pancakeBlock(ModBlocks.CHOCOLATE_PANCAKES.get());
         pancakeBlock(ModBlocks.CHERRY_BLOSSOM_PANCAKES.get());
         pancakeBlock(ModBlocks.VEGETABLE_PANCAKES.get());
+        pancakeBlock(ModBlocks.PUMPKIN_PANCAKES.get());
     }
 
     private void pancakeBlock(Block block) {

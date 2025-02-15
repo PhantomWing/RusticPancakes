@@ -3,22 +3,25 @@
   "category": "misc",
   "key": {
     "B": {
+      "item": "minecraft:bowl"
+    },
+    "M": {
       "item": "rusticpancakes:batter"
     },
-    "P": {
-      "tag": "rusticpancakes:cherry_blossom_ingredients"
+    "T": {
+      "tag": "c:foods/milk"
     },
     "X": {
-      "item": "minecraft:sugar"
+      "tag": "rusticpancakes:cherry_blossom_ingredients"
     },
     "Y": {
-      "item": "minecraft:bowl"
+      "tag": "rusticpancakes:cherry_blossom_ingredients"
     }
   },
   "pattern": [
-    "XPX",
-    "PBP",
-    "XYX"
+    " T ",
+    "XMX",
+    "YBY"
   ],
   "result": {
     "count": 1,

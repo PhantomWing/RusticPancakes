@@ -18,10 +18,19 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         // Items
         simpleItem(ModItems.BATTER);
+        simpleItem(ModItems.SYRUP);
+        simpleItem(ModItems.CHERRY_BLOSSOM_PANCAKE);
         simpleItem(ModItems.CHERRY_BLOSSOM_PANCAKES);
+        simpleItem(ModItems.CHOCOLATE_PANCAKE);
         simpleItem(ModItems.CHOCOLATE_PANCAKES);
+        simpleItem(ModItems.HONEY_PANCAKE);
         simpleItem(ModItems.HONEY_PANCAKES);
+        simpleItem(ModItems.VEGETABLE_PANCAKE);
         simpleItem(ModItems.VEGETABLE_PANCAKES);
+        simpleItem(ModItems.PUMPKIN_PANCAKE);
+        simpleItem(ModItems.PUMPKIN_PANCAKES);
+        simpleItem(ModItems.PANCAKE);
+        simpleItem(ModItems.PANCAKES);
     }
 
     // A simple item with a model generated from its sprite.

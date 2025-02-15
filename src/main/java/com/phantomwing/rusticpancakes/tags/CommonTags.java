@@ -22,6 +22,7 @@ public class CommonTags {
     public static final TagKey<Item> FOODS_ONION = commonItemTag("foods/onion");
     public static final TagKey<Item> FOODS_TOMATO = commonItemTag("foods/tomato");
     public static final TagKey<Item> FOODS_BELL_PEPPER = commonItemTag("foods/bell_pepper");
+    public static final TagKey<Item> FOODS_PUMPKIN = commonItemTag("foods/pumpkin");
 
     public static final TagKey<Item> CROPS_COTTON = commonItemTag("crops/cotton");
     public static final TagKey<Item> CROPS_BELL_PEPPER = commonItemTag("crops/bell_pepper");

@@ -19,6 +19,8 @@ public class ModTags {
     // Item tags
     public static class Items {
         public static final TagKey<Item> CHERRY_BLOSSOM_INGREDIENTS = tag("cherry_blossom_ingredients");
+        public static final TagKey<Item> SYRUP_INGREDIENTS = tag("syrup_ingredients");
+        public static final TagKey<Item> SYRUP = tag("syrup");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(RusticPancakes.MOD_ID, name));

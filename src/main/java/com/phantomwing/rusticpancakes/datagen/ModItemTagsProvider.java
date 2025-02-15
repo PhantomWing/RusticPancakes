@@ -1,6 +1,7 @@
 package com.phantomwing.rusticpancakes.datagen;
 
 import com.phantomwing.rusticpancakes.RusticPancakes;
+import com.phantomwing.rusticpancakes.item.ModItems;
 import com.phantomwing.rusticpancakes.tags.CommonTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -8,6 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,5 +29,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         );
 
         this.tag(CommonTags.FOODS_MILK).add(Items.MILK_BUCKET);
+        this.tag(CommonTags.FOODS_PUMPKIN).add(Items.PUMPKIN);
+
+        // Syrup
+        this.tag(ModTags.Items.SYRUP_INGREDIENTS).add(
+                Items.APPLE
+        ).addTag(Tags.Items.CROPS_BEETROOT);
+
+        this.tag(ModTags.Items.SYRUP).add(
+                ModItems.SYRUP.get()
+        );
     }
 }

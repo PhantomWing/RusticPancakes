@@ -1,5 +1,7 @@
-// 1.21	2024-11-17T23:59:03.8926893	Loot Tables
+// 1.21	2025-02-15T22:33:48.1456932	Loot Tables
 bd6e88e29229785eb25375f844ca827e2624f9fa data/rusticpancakes/loot_table/blocks/cherry_blossom_pancakes.json
 bb512f21a99a9806cbfb5dbb045c796b0b04d1a9 data/rusticpancakes/loot_table/blocks/chocolate_pancakes.json
 dde2bd2c3203755604ff0fddd6d0f295651f3697 data/rusticpancakes/loot_table/blocks/honey_pancakes.json
+4e504a070d70d49b7cbb322ed5b1f415815501be data/rusticpancakes/loot_table/blocks/pancakes.json
+58bed7a76807e6a1e53687dfa89c4d2183cc5ea5 data/rusticpancakes/loot_table/blocks/pumpkin_pancakes.json
 9536c47087c4ce77f666ab4e29a3ca830f2e22fc data/rusticpancakes/loot_table/blocks/vegetable_pancakes.json

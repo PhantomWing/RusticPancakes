@@ -27,10 +27,12 @@ public class BlockLootTables extends BlockLootSubProvider {
     // Actually add our loot tables.
     @Override
     protected void generate() {
+        dropFoodBlock(ModBlocks.PANCAKES.get(), PancakeBlock.SERVINGS, Items.BOWL);
         dropFoodBlock(ModBlocks.HONEY_PANCAKES.get(), PancakeBlock.SERVINGS, Items.BOWL);
         dropFoodBlock(ModBlocks.CHOCOLATE_PANCAKES.get(), PancakeBlock.SERVINGS, Items.BOWL);
         dropFoodBlock(ModBlocks.CHERRY_BLOSSOM_PANCAKES.get(), PancakeBlock.SERVINGS, Items.BOWL);
         dropFoodBlock(ModBlocks.VEGETABLE_PANCAKES.get(), PancakeBlock.SERVINGS, Items.BOWL);
+        dropFoodBlock(ModBlocks.PUMPKIN_PANCAKES.get(), PancakeBlock.SERVINGS, Items.BOWL);
     }
 
     // The contents of this Iterable are used for validation.
