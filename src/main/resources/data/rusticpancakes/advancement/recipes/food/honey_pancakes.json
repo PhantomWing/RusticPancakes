@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "rusticpancakes:batter"
+            "items": "rusticdelight:batter"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:honey_pancakes"
+        "recipe": "rusticdelight:honey_pancakes"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "rusticpancakes:honey_pancakes"
+      "rusticdelight:honey_pancakes"
     ]
   }
 }

@@ -2,7 +2,16 @@
   "block.rusticpancakes.cherry_blossom_pancakes": "Kersenbloesem pannenkoeken",
   "block.rusticpancakes.chocolate_pancakes": "Chocolade pannenkoeken",
   "block.rusticpancakes.honey_pancakes": "Honing pannenkoeken",
+  "block.rusticdelight.pancakes": "Pannenkoeken",
+  "block.rusticdelight.pumpkin_pancakes": "Pompoen pannenkoeken",
   "block.rusticpancakes.vegetable_pancakes": "Groentepannenkoeken",
   "item.rusticpancakes.batter": "Beslag",
+  "item.rusticdelight.cherry_blossom_pancake": "Kersenbloesem pannenkoek",
+  "item.rusticdelight.chocolate_pancake": "Chocolade pannenkoek",
+  "item.rusticdelight.honey_pancake": "Honing pannenkoek",
+  "item.rusticdelight.pancake": "Pannenkoek",
+  "item.rusticdelight.pumpkin_pancake": "Pompoen pannenkoek",
+  "item.rusticdelight.syrup": "Stroop",
+  "item.rusticdelight.vegetable_pancake": "Groente pannenkoek",
   "itemGroup.rusticpancakes": "Rustic Pancakes"
 }

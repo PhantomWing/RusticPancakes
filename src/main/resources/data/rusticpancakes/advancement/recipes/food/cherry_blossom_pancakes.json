@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "rusticpancakes:batter"
+            "items": "rusticdelight:batter"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:cherry_blossom_pancakes"
+        "recipe": "rusticdelight:cherry_blossom_pancakes"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "rusticpancakes:cherry_blossom_pancakes"
+      "rusticdelight:cherry_blossom_pancakes"
     ]
   }
 }
