@@ -1,0 +1,10 @@
+{
+  "parent": "farmersdelight:block/pie_slice2",
+  "textures": {
+    "particle": "rusticpancakes:block/cherry_blossom_cheesecake_top",
+    "bottom": "rusticpancakes:block/cherry_blossom_cheesecake_bottom",
+    "inner": "rusticpancakes:block/cherry_blossom_cheesecake_side",
+    "side": "rusticpancakes:block/cherry_blossom_cheesecake_side",
+    "top": "rusticpancakes:block/cherry_blossom_cheesecake_top"
+  }
+}

@@ -78,6 +78,7 @@ public class ForgeTags {
     public static final TagKey<Item> VEGETABLES_POTATO = forgeItemTag("vegetables/potato");
     public static final TagKey<Item> VEGETABLES_TOMATO = forgeItemTag("vegetables/tomato");
     public static final TagKey<Item> VEGETABLES_BELL_PEPPER = forgeItemTag("vegetables/bell_pepper");
+    public static final TagKey<Item> VEGETABLES_PUMPKIN = forgeItemTag("vegetables/pumpkin");
 
     public static final TagKey<Item> TOOLS = forgeItemTag("tools");
     public static final TagKey<Item> TOOLS_AXES = forgeItemTag("tools/axes");

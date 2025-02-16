@@ -2,7 +2,16 @@
   "block.rusticpancakes.cherry_blossom_pancakes": "Kirschblütenpfannkuchen",
   "block.rusticpancakes.chocolate_pancakes": "Schokoladenpfannkuchen",
   "block.rusticpancakes.honey_pancakes": "Honigpfannkuchen",
+  "block.rusticpancakes.pancakes": "Pfannkuchen",
+  "block.rusticpancakes.pumpkin_pancakes": "Kürbispfannkuchen",
   "block.rusticpancakes.vegetable_pancakes": "Gemüsepfannkuchen",
   "item.rusticpancakes.batter": "Teig",
+  "item.rusticpancakes.cherry_blossom_pancake": "Kirschblütenpfannkuchen",
+  "item.rusticpancakes.chocolate_pancake": "Schokoladenpfannkuchen",
+  "item.rusticpancakes.honey_pancake": "Honigpfannkuchen",
+  "item.rusticpancakes.pancake": "Pfannkuchen",
+  "item.rusticpancakes.pumpkin_pancake": "Kürbispfannkuchen",
+  "item.rusticpancakes.syrup": "Sirup",
+  "item.rusticpancakes.vegetable_pancake": "Gemüsepfannkuchen",
   "itemGroup.rusticpancakes": "Rustic Pancakes"
 }

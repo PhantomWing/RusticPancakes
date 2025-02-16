@@ -1,0 +1,10 @@
+{
+  "parent": "farmersdelight:block/pie_slice1",
+  "textures": {
+    "particle": "rusticpancakes:block/syrup_cheesecake_top",
+    "bottom": "rusticpancakes:block/syrup_cheesecake_bottom",
+    "inner": "rusticpancakes:block/syrup_cheesecake_inner",
+    "side": "rusticpancakes:block/syrup_cheesecake_side",
+    "top": "rusticpancakes:block/syrup_cheesecake_top"
+  }
+}

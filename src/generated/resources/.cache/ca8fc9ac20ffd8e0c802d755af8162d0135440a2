@@ -1,6 +1,15 @@
-// 1.20.1	2024-11-22T21:31:01.7689771	Item Models: rusticpancakes
+// 1.20.1	2025-02-16T14:02:44.8511228	Item Models: rusticpancakes
 095f561a7edc690a5fac15330bca501dce891168 assets/rusticpancakes/models/item/batter.json
+5c4f2910a028a187b00449c3085953e3b234dcdb assets/rusticpancakes/models/item/cherry_blossom_pancake.json
 d6ddf3a62448c3c974df11976b7370e276075d8d assets/rusticpancakes/models/item/cherry_blossom_pancakes.json
+9cb0fd8e9bffc0e8b3fa7fcdde3cb510cff30807 assets/rusticpancakes/models/item/chocolate_pancake.json
 e464921479a3c37084064907722058b7b8741af3 assets/rusticpancakes/models/item/chocolate_pancakes.json
+3120ecb8749548e76669b36e20f927edf3d7ca05 assets/rusticpancakes/models/item/honey_pancake.json
 5f0e4cd3d3a575dc6835506fb6fd709ded020ac9 assets/rusticpancakes/models/item/honey_pancakes.json
+f60512438aa8b73b613c003031d25a94e2e323a2 assets/rusticpancakes/models/item/pancake.json
+b066413e7c06d4cdb82de1492234022b83fd5b18 assets/rusticpancakes/models/item/pancakes.json
+9c5f89f7695707fe571dde704a8bab1ee6b08be5 assets/rusticpancakes/models/item/pumpkin_pancake.json
+cf0e55d7a86249675f3f77fc8d2e947a4a48680e assets/rusticpancakes/models/item/pumpkin_pancakes.json
+06450029ad112d95826ee2538aaec56ab76e1b1e assets/rusticpancakes/models/item/syrup.json
+593f39d3a065ed7fc927127248e7d9e3a15beafe assets/rusticpancakes/models/item/vegetable_pancake.json
 c13696f349089e3645ee8eb82efd941baa954fc7 assets/rusticpancakes/models/item/vegetable_pancakes.json

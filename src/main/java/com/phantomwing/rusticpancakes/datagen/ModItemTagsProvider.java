@@ -1,6 +1,7 @@
 package com.phantomwing.rusticpancakes.datagen;
 
 import com.phantomwing.rusticpancakes.RusticPancakes;
+import com.phantomwing.rusticpancakes.item.ModItems;
 import com.phantomwing.rusticpancakes.tags.ForgeTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -8,6 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,6 +31,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // Milk
         this.tag(ForgeTags.MILK).add(Items.MILK_BUCKET);
 
+        // Pumpkin
+        this.tag(ForgeTags.VEGETABLES_PUMPKIN).add(Items.PUMPKIN);
+
         // Handle vegetables
         this.tag(ForgeTags.VEGETABLES)
             .addTag(ForgeTags.VEGETABLES_BEETROOT)
@@ -37,5 +42,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ForgeTags.VEGETABLES_BEETROOT).add(Items.BEETROOT);
         tag(ForgeTags.VEGETABLES_CARROT).add(Items.CARROT);
         tag(ForgeTags.VEGETABLES_POTATO).add(Items.POTATO);
+
+        // Syrup
+        this.tag(ModTags.Items.SYRUP_INGREDIENTS).add(
+                Items.APPLE
+        ).addTag(Tags.Items.CROPS_BEETROOT);
+
+        this.tag(ModTags.Items.SYRUP).add(
+                ModItems.SYRUP.get()
+        );
     }
 }

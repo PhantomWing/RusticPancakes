@@ -1,0 +1,17 @@
+{
+  "block.rusticpancakes.cherry_blossom_pancakes": "サクラパンケーキ",
+  "block.rusticpancakes.chocolate_pancakes": "チョコレートパンケーキ",
+  "block.rusticpancakes.honey_pancakes": "ハチミツパンケーキ",
+  "block.rusticpancakes.pancakes": "パンケーキ",
+  "block.rusticpancakes.pumpkin_pancakes": "かぼちゃパンケーキ",
+  "block.rusticpancakes.vegetable_pancakes": "ベジパンケーキ",
+  "item.rusticpancakes.batter": "バッター",
+  "item.rusticpancakes.cherry_blossom_pancake": "サクラパンケーキ",
+  "item.rusticpancakes.chocolate_pancake": "チョコレートパンケーキ",
+  "item.rusticpancakes.honey_pancake": "ハチミツパンケーキ",
+  "item.rusticpancakes.pancake": "パンケーキ",
+  "item.rusticpancakes.pumpkin_pancake": "かぼちゃパンケーキ",
+  "item.rusticpancakes.syrup": "シロップ",
+  "item.rusticpancakes.vegetable_pancake": "ベジパンケーキ",
+  "itemGroup.rusticpancakes": "Rustic Delight",
+}

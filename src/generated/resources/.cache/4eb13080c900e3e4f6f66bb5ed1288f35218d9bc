@@ -1,7 +1,10 @@
-// 1.20.1	2024-11-22T21:49:52.9316006	Tags for minecraft:item mod id rusticpancakes
+// 1.20.1	2025-02-16T14:02:44.8471076	Tags for minecraft:item mod id rusticpancakes
 edb5947f84984a39ab47c98c6fb0b3c3a9a8cc39 data/forge/tags/items/milk.json
 7795895aa73a201f39ab287c8365af6f9b5e611d data/forge/tags/items/vegetables.json
 f9570db096e701a0b8872dddbb31d8dffea2a204 data/forge/tags/items/vegetables/beetroot.json
 3a6049fdf6a247720cef5ea417a0c9519f707e01 data/forge/tags/items/vegetables/carrot.json
 849f851b30eb74acf2ca9316cd9708544427ecbc data/forge/tags/items/vegetables/potato.json
+fb20556192c9d25a9791b8eb05837ad23fad883d data/forge/tags/items/vegetables/pumpkin.json
 c2122a7767958a3c19ee1e3fe408f30bf692f325 data/rusticpancakes/tags/items/cherry_blossom_ingredients.json
+6aa9c4327eccb5f3312ec4413b7e4e9158b18911 data/rusticpancakes/tags/items/syrup.json
+901f61aac8244af1984f67a080b8137a87585753 data/rusticpancakes/tags/items/syrup_ingredients.json

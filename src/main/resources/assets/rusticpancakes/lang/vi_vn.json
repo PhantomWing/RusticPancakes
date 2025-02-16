@@ -2,7 +2,16 @@
   "block.rusticpancakes.cherry_blossom_pancakes": "Bánh nướng chảo hoa anh đào",
   "block.rusticpancakes.chocolate_pancakes": "Bánh nướng chảo sô cô la",
   "block.rusticpancakes.honey_pancakes": "Bánh nướng chảo mật ong",
+  "block.rusticpancakes.pancakes": "Bánh nướng chảo",
+  "block.rusticpancakes.pumpkin_pancakes": "Bánh nướng chảo bí ngô",
   "block.rusticpancakes.vegetable_pancakes": "Bánh nướng chảo chay",
   "item.rusticpancakes.batter": "Bột nhão",
+  "item.rusticpancakes.cherry_blossom_pancake": "Bánh nướng chảo hoa anh đào",
+  "item.rusticpancakes.chocolate_pancake": "Bánh nướng chảo sô cô la",
+  "item.rusticpancakes.honey_pancake": "Bánh nướng chảo mật ong",
+  "item.rusticpancakes.pancake": "Bánh nướng chảo",
+  "item.rusticpancakes.pumpkin_pancake": "Bánh nướng chảo bí ngô",
+  "item.rusticpancakes.syrup": "Siro",
+  "item.rusticpancakes.vegetable_pancake": "Bánh nướng chảo chay",
   "itemGroup.rusticpancakes": "Rustic Pancakes"
 }

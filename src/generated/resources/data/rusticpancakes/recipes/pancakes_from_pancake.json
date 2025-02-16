@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "rusticpancakes:pancake"
+    },
+    {
+      "item": "rusticpancakes:pancake"
+    },
+    {
+      "item": "rusticpancakes:pancake"
+    },
+    {
+      "item": "rusticpancakes:pancake"
+    },
+    {
+      "item": "rusticpancakes:pancake"
+    },
+    {
+      "item": "rusticpancakes:pancake"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "rusticpancakes:pancakes"
+  }
+}

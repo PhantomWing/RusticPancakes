@@ -3,22 +3,25 @@
   "category": "misc",
   "key": {
     "B": {
+      "item": "minecraft:bowl"
+    },
+    "M": {
       "item": "rusticpancakes:batter"
     },
-    "L": {
-      "item": "minecraft:sugar"
+    "T": {
+      "tag": "forge:milk"
     },
-    "V": {
+    "X": {
       "tag": "forge:vegetables"
     },
     "Y": {
-      "item": "minecraft:bowl"
+      "tag": "forge:vegetables"
     }
   },
   "pattern": [
-    "LVL",
-    "VBV",
-    "LYL"
+    " T ",
+    "XMX",
+    "YBY"
   ],
   "result": {
     "item": "rusticpancakes:vegetable_pancakes"
