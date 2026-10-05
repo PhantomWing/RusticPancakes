@@ -1,6 +1,7 @@
 package com.phantomwing.rusticpancakes;
 
 import com.phantomwing.rusticpancakes.block.ModBlocks;
+import com.phantomwing.rusticpancakes.event.ModEvents;
 import com.phantomwing.rusticpancakes.item.ModItems;
 import com.phantomwing.rusticpancakes.ui.ModCreativeModeTab;
 
@@ -15,5 +16,6 @@ public final class RusticPancakesCommon {
         ModBlocks.register();
         ModItems.register();
         ModCreativeModeTab.register();
+        ModEvents.register();
     }
 }

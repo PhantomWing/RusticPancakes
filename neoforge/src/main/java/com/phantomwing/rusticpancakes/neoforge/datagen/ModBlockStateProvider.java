@@ -32,8 +32,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void pancakeBlock(Block block) {
         getVariantBuilder(block)
                 .forAllStates(state -> {
-                            int servings = state.getValue(PancakeBlock.SERVINGS);
-                            String suffix = "_stage" + servings;
+                            // Models are named for the number of pancakes they show, so the mapping
+                            // needs no translation from the packed servings value.
+                            String suffix = "_stack_" + PancakeBlock.getPancakesPresent(state);
                             return ConfiguredModel.builder()
                                     .modelFile(existingModel(blockName(block) + suffix))
                                     .rotationY(((int) state.getValue(PancakeBlock.FACING).toYRot() + DEFAULT_ANGLE_OFFSET) % 360)

@@ -1,7 +1,7 @@
-// 1.21.1	2026-10-05T23:03:26.4287916	Loot Tables
-bd6e88e29229785eb25375f844ca827e2624f9fa data/rusticpancakes/loot_table/blocks/cherry_blossom_pancakes.json
-bb512f21a99a9806cbfb5dbb045c796b0b04d1a9 data/rusticpancakes/loot_table/blocks/chocolate_pancakes.json
-dde2bd2c3203755604ff0fddd6d0f295651f3697 data/rusticpancakes/loot_table/blocks/honey_pancakes.json
-4e504a070d70d49b7cbb322ed5b1f415815501be data/rusticpancakes/loot_table/blocks/pancakes.json
-58bed7a76807e6a1e53687dfa89c4d2183cc5ea5 data/rusticpancakes/loot_table/blocks/pumpkin_pancakes.json
-9536c47087c4ce77f666ab4e29a3ca830f2e22fc data/rusticpancakes/loot_table/blocks/vegetable_pancakes.json
+// 1.21.1	2026-10-05T23:57:51.3464014	Loot Tables
+363da33e4baa52159e501badd951dc89d7220783 data/rusticpancakes/loot_table/blocks/cherry_blossom_pancakes.json
+460c0f00762c0a0e7b9e1c2f0b1405831ce1bf1a data/rusticpancakes/loot_table/blocks/chocolate_pancakes.json
+04b32e6c665191da9afb96ecff363ec07c94337f data/rusticpancakes/loot_table/blocks/honey_pancakes.json
+bd52ee04e6f64ce8f254b380adcb5c405107c4e0 data/rusticpancakes/loot_table/blocks/pancakes.json
+6c95aaba6f1d46fe4b68de0f4048779891378877 data/rusticpancakes/loot_table/blocks/pumpkin_pancakes.json
+f3d4869c659abe98f0fe537454e81004e0451290 data/rusticpancakes/loot_table/blocks/vegetable_pancakes.json
