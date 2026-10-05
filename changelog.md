@@ -1,3 +1,12 @@
+# 1.2.0
+
+### Additions
+- Rustic Pancakes now runs on both Fabric and NeoForge. Fabric gets everything from 1.1.0 as well: Pancakes, Pumpkin Pancakes, Syrup and single pancakes
+
+### Changes
+- Now requires Architectury API
+
+
 # 1.1.0
 
 ### Additions

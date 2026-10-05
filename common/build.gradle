@@ -1,0 +1,33 @@
+architectury {
+    common(rootProject.enabled_platforms.split(','))
+}
+
+// Datagen output is committed and shared by both loaders: the NeoForge data generator (see
+// :neoforge) writes it here, and shipping it from common puts it in every loader's jar.
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/generated/resources'
+        }
+    }
+}
+
+processResources {
+    // The data generator's hash cache is not a runtime resource.
+    exclude '.cache/**'
+}
+
+dependencies {
+    // Only for the @Environment annotations and mixin dependencies. Use nothing else from Fabric Loader here.
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "dev.architectury:architectury:${rootProject.architectury_version}"
+}
+
+publishing {
+    publications {
+        mavenCommon(MavenPublication) {
+            artifactId = "${rootProject.mod_id}-common"
+            from components.java
+        }
+    }
+}

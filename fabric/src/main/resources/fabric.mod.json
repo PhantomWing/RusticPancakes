@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "contact": {
+    "homepage": "https://github.com/PhantomWing/RusticPancakes",
+    "sources": "https://github.com/PhantomWing/RusticPancakes",
+    "issues": "https://github.com/PhantomWing/RusticPancakes/issues"
+  },
+  "license": "${mod_license}",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.phantomwing.rusticpancakes.fabric.RusticPancakesFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "minecraft": "${minecraft_version_range}",
+    "architectury": ">=${architectury_version}"
+  }
+}

@@ -1,0 +1,87 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+configurations {
+    common
+    shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    shadowCommon(project(path: ':common', configuration: 'transformProductionFabric')) { transitive false }
+}
+
+processResources {
+    def fmjProps = [
+            version                : project.version,
+            mod_id                 : rootProject.mod_id,
+            mod_name               : rootProject.mod_name,
+            mod_description        : rootProject.mod_description,
+            mod_authors            : rootProject.mod_authors,
+            mod_license            : rootProject.mod_license,
+            fabric_loader_version  : rootProject.fabric_loader_version,
+            fabric_api_version     : rootProject.fabric_api_version,
+            minecraft_version_range: convertMavenRangeToFabricRange(rootProject.minecraft_version_range),
+            architectury_version   : rootProject.architectury_version,
+    ]
+    inputs.properties fmjProps
+
+    filesMatching('fabric.mod.json') {
+        expand fmjProps
+    }
+}
+
+/** `[1.21,1.21.2)` to `>=1.21 <1.21.2`, so both loaders read the same `minecraft_version_range`. */
+static String convertMavenRangeToFabricRange(String mavenRange) {
+    def m = (mavenRange =~ /^\[([^,\]]+),([^\)\]]+)\)$/)
+    if (m.matches()) {
+        return ">=${m[0][1]} <${m[0][2]}"
+    }
+    return mavenRange
+}
+
+shadowJar {
+    exclude 'architectury.common.json'
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    input.set shadowJar.archiveFile
+    dependsOn shadowJar
+}
+
+sourcesJar {
+    def commonSources = project(':common').sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+publishing {
+    publications {
+        mavenFabric(MavenPublication) {
+            artifactId = "${rootProject.mod_id}-fabric"
+            from components.java
+        }
+    }
+}

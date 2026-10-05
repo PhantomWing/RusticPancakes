@@ -21,5 +21,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # gradle.properties pins the daemon's JDK to a local Windows path; point it at the runner's.
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build -Dorg.gradle.java.home="$JAVA_HOME"

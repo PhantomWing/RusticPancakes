@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "M": {
+      "item": "rusticpancakes:batter"
+    },
+    "T": {
+      "tag": "c:foods/milk"
+    },
+    "X": {
+      "tag": "c:foods/vegetable"
+    },
+    "Y": {
+      "tag": "c:foods/vegetable"
+    }
+  },
+  "pattern": [
+    " T ",
+    "XMX",
+    "YBY"
+  ],
+  "result": {
+    "count": 1,
+    "id": "rusticpancakes:vegetable_pancakes"
+  }
+}
