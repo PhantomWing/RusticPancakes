@@ -1,4 +1,12 @@
 {
+  "advancements.rusticpancakes.batter.description": "Dùng Sữa, Trứng và Lúa mì để làm Bột nhão.",
+  "advancements.rusticpancakes.batter.title": "Bắt đầu từ bột",
+  "advancements.rusticpancakes.pancakes.description": "Làm một chồng Bánh nướng chảo.",
+  "advancements.rusticpancakes.pancakes.title": "Vừa ra lò",
+  "advancements.rusticpancakes.root.description": "Những chồng bánh nướng chảo vàng ươm đang chờ đón.",
+  "advancements.rusticpancakes.root.title": "Rustic Pancakes",
+  "advancements.rusticpancakes.syrup.description": "Dùng Táo hoặc Củ dền với Đường để làm Siro.",
+  "advancements.rusticpancakes.syrup.title": "Một chút ngọt ngào",
   "block.rusticpancakes.cherry_blossom_pancakes": "Bánh nướng chảo hoa anh đào",
   "block.rusticpancakes.chocolate_pancakes": "Bánh nướng chảo sô cô la",
   "block.rusticpancakes.honey_pancakes": "Bánh nướng chảo mật ong",
@@ -13,5 +21,6 @@
   "item.rusticpancakes.pumpkin_pancake": "Bánh nướng chảo bí ngô",
   "item.rusticpancakes.syrup": "Siro",
   "item.rusticpancakes.vegetable_pancake": "Bánh nướng chảo chay",
-  "itemGroup.rusticpancakes": "Rustic Pancakes"
+  "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tooltip.rusticpancakes.placeable": "Có thể đặt"
 }

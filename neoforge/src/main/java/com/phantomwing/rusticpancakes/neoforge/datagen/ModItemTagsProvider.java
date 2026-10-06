@@ -3,10 +3,12 @@ package com.phantomwing.rusticpancakes.neoforge.datagen;
 import com.phantomwing.rusticpancakes.RusticPancakes;
 import com.phantomwing.rusticpancakes.item.ModItems;
 import com.phantomwing.rusticpancakes.tags.CommonTags;
+import com.phantomwing.rusticpancakes.tags.CompatibilityTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -38,6 +40,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         this.tag(ModTags.Items.SYRUP).add(
                 ModItems.SYRUP.get()
-        );
+        // Hearth and Harvest's syrup bottle works anywhere our syrup does.
+        ).addOptional(ResourceLocation.fromNamespaceAndPath(CompatibilityTags.HEARTH_AND_HARVEST, "syrup_bottle"));
+
+        copy(ModTags.Blocks.PANCAKES, ModTags.Items.PANCAKES);
     }
 }

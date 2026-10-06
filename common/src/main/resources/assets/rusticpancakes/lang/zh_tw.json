@@ -1,4 +1,12 @@
 {
+  "advancements.rusticpancakes.batter.description": "用牛奶、雞蛋和小麥製作麵糊。",
+  "advancements.rusticpancakes.batter.title": "萬事開頭糊",
+  "advancements.rusticpancakes.pancakes.description": "製作一疊煎餅。",
+  "advancements.rusticpancakes.pancakes.title": "新鮮出爐",
+  "advancements.rusticpancakes.root.description": "一疊疊金黃的煎餅正等著你。",
+  "advancements.rusticpancakes.root.title": "Rustic Pancakes",
+  "advancements.rusticpancakes.syrup.description": "用蘋果或甜菜根加糖製作糖漿。",
+  "advancements.rusticpancakes.syrup.title": "甜蜜滋味",
   "block.rusticpancakes.cherry_blossom_pancakes": "櫻花煎餅",
   "block.rusticpancakes.chocolate_pancakes": "巧克力煎餅",
   "block.rusticpancakes.honey_pancakes": "蜂蜜煎餅",
@@ -13,5 +21,6 @@
   "item.rusticpancakes.pumpkin_pancake": "南瓜煎餅",
   "item.rusticpancakes.syrup": "糖漿",
   "item.rusticpancakes.vegetable_pancake": "蔬菜煎餅",
-  "itemGroup.rusticpancakes": "Rustic Pancakes"
+  "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tooltip.rusticpancakes.placeable": "可放置"
 }

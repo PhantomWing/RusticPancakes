@@ -1,4 +1,12 @@
 {
+  "advancements.rusticpancakes.batter.description": "Verarbeite Milch, ein Ei und Weizen zu Teig.",
+  "advancements.rusticpancakes.batter.title": "Teig sei Dank",
+  "advancements.rusticpancakes.pancakes.description": "Stelle einen Stapel Pfannkuchen her.",
+  "advancements.rusticpancakes.pancakes.title": "Frisch aus der Pfanne",
+  "advancements.rusticpancakes.root.description": "Goldene Pfannkuchenstapel warten auf dich.",
+  "advancements.rusticpancakes.root.title": "Rustic Pancakes",
+  "advancements.rusticpancakes.syrup.description": "Verarbeite Äpfel oder Rote Bete mit Zucker zu Sirup.",
+  "advancements.rusticpancakes.syrup.title": "Ein Hauch von Süße",
   "block.rusticpancakes.cherry_blossom_pancakes": "Kirschblütenpfannkuchen",
   "block.rusticpancakes.chocolate_pancakes": "Schokoladenpfannkuchen",
   "block.rusticpancakes.honey_pancakes": "Honigpfannkuchen",
@@ -13,5 +21,6 @@
   "item.rusticpancakes.pumpkin_pancake": "Kürbispfannkuchen",
   "item.rusticpancakes.syrup": "Sirup",
   "item.rusticpancakes.vegetable_pancake": "Gemüsepfannkuchen",
-  "itemGroup.rusticpancakes": "Rustic Pancakes"
+  "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tooltip.rusticpancakes.placeable": "Platzierbar"
 }

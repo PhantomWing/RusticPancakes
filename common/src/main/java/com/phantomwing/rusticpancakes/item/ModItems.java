@@ -6,10 +6,10 @@ import com.phantomwing.rusticpancakes.block.ModBlocks;
 import com.phantomwing.rusticpancakes.food.FoodValues;
 import com.phantomwing.rusticpancakes.item.custom.ConsumableItem;
 import com.phantomwing.rusticpancakes.item.custom.DrinkableItem;
+import com.phantomwing.rusticpancakes.item.custom.PlaceableItem;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -71,7 +71,7 @@ public class ModItems {
     }
 
     public static RegistrySupplier<Item> registerBlockWithTab(RegistrySupplier<Block> block, Item.Properties properties) {
-        return registerWithTab(block.getId().getPath(), () -> new BlockItem(block.get(), properties));
+        return registerWithTab(block.getId().getPath(), () -> new PlaceableItem(block.get(), properties));
     }
 
     public static void register() {

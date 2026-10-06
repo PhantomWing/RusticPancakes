@@ -1,4 +1,12 @@
 {
+  "advancements.rusticpancakes.batter.description": "牛乳、卵、小麦からバッターを作ろう。",
+  "advancements.rusticpancakes.batter.title": "まずは生地から",
+  "advancements.rusticpancakes.pancakes.description": "パンケーキを積み上げて作ろう。",
+  "advancements.rusticpancakes.pancakes.title": "焼きたてホカホカ",
+  "advancements.rusticpancakes.root.description": "こんがり焼けたパンケーキの山が待っている。",
+  "advancements.rusticpancakes.root.title": "Rustic Pancakes",
+  "advancements.rusticpancakes.syrup.description": "リンゴかビートルートと砂糖からシロップを作ろう。",
+  "advancements.rusticpancakes.syrup.title": "甘さのひとしずく",
   "block.rusticpancakes.cherry_blossom_pancakes": "サクラパンケーキ",
   "block.rusticpancakes.chocolate_pancakes": "チョコレートパンケーキ",
   "block.rusticpancakes.honey_pancakes": "ハチミツパンケーキ",
@@ -13,5 +21,6 @@
   "item.rusticpancakes.pumpkin_pancake": "かぼちゃパンケーキ",
   "item.rusticpancakes.syrup": "シロップ",
   "item.rusticpancakes.vegetable_pancake": "ベジパンケーキ",
-  "itemGroup.rusticpancakes": "Rustic Delight",
+  "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tooltip.rusticpancakes.placeable": "設置可能"
 }

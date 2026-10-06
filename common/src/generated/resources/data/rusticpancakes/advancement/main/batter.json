@@ -1,0 +1,33 @@
+{
+  "parent": "rusticpancakes:main/root",
+  "criteria": {
+    "batter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "rusticpancakes:batter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.rusticpancakes.batter.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "rusticpancakes:batter"
+    },
+    "title": {
+      "translate": "advancements.rusticpancakes.batter.title"
+    }
+  },
+  "requirements": [
+    [
+      "batter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

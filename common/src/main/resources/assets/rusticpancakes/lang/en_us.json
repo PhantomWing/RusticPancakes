@@ -1,4 +1,12 @@
 {
+  "advancements.rusticpancakes.batter.description": "Mix Milk, an Egg and Wheat to make Batter.",
+  "advancements.rusticpancakes.batter.title": "Batter Up!",
+  "advancements.rusticpancakes.pancakes.description": "Make a stack of Pancakes.",
+  "advancements.rusticpancakes.pancakes.title": "Fresh Off the Griddle",
+  "advancements.rusticpancakes.root.description": "Golden stacks of pancakes await.",
+  "advancements.rusticpancakes.root.title": "Rustic Pancakes",
+  "advancements.rusticpancakes.syrup.description": "Use Apples or Beetroot with Sugar to make Syrup.",
+  "advancements.rusticpancakes.syrup.title": "A Taste of Sweetness",
   "block.rusticpancakes.cherry_blossom_pancakes": "Cherry Blossom Pancakes",
   "block.rusticpancakes.chocolate_pancakes": "Chocolate Pancakes",
   "block.rusticpancakes.honey_pancakes": "Honey Pancakes",
@@ -13,5 +21,6 @@
   "item.rusticpancakes.pumpkin_pancake": "Pumpkin Pancake",
   "item.rusticpancakes.syrup": "Syrup",
   "item.rusticpancakes.vegetable_pancake": "Vegetable Pancake",
-  "itemGroup.rusticpancakes": "Rustic Pancakes"
+  "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tooltip.rusticpancakes.placeable": "Placeable"
 }

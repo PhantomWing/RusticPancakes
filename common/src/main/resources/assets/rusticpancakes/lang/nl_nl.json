@@ -1,4 +1,12 @@
 {
+  "advancements.rusticpancakes.batter.description": "Gebruik Melk, een Ei en Tarwe om Beslag te maken.",
+  "advancements.rusticpancakes.batter.title": "Goed beslagen",
+  "advancements.rusticpancakes.pancakes.description": "Maak een stapel Pannenkoeken.",
+  "advancements.rusticpancakes.pancakes.title": "Vers uit de pan",
+  "advancements.rusticpancakes.root.description": "Goudbruine stapels pannenkoeken wachten op je.",
+  "advancements.rusticpancakes.root.title": "Rustic Pancakes",
+  "advancements.rusticpancakes.syrup.description": "Gebruik Appels of Rode Biet met Suiker om Stroop te maken.",
+  "advancements.rusticpancakes.syrup.title": "Een vleugje zoetigheid",
   "block.rusticpancakes.cherry_blossom_pancakes": "Kersenbloesem pannenkoeken",
   "block.rusticpancakes.chocolate_pancakes": "Chocolade pannenkoeken",
   "block.rusticpancakes.honey_pancakes": "Honing pannenkoeken",
@@ -13,5 +21,6 @@
   "item.rusticpancakes.pumpkin_pancake": "Pompoen pannenkoek",
   "item.rusticpancakes.syrup": "Stroop",
   "item.rusticpancakes.vegetable_pancake": "Groente pannenkoek",
-  "itemGroup.rusticpancakes": "Rustic Pancakes"
+  "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tooltip.rusticpancakes.placeable": "Plaatsbaar"
 }
