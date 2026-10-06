@@ -12,6 +12,9 @@ def datagenModId = rootProject.property('mod_id').toString()
 def datagenOutput = rootProject.file('common/src/generated/resources/').absolutePath
 def datagenExisting = rootProject.file('common/src/main/resources/').absolutePath
 
+def runningGameTest = gradle.startParameter.taskNames.any { it.toLowerCase().contains('gametest') }
+def runningDataGen = gradle.startParameter.taskNames.any { it.toLowerCase().contains('data') }
+
 loom {
     // The game tests join the dev mod through Loom's own `main` group. A second group for the same mod
     // hands the loader two copies, and some FML releases keep the one without the tests (none run).
@@ -67,6 +70,13 @@ dependencies {
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowCommon(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive false }
+
+    // Dev-runtime niceties: never compiled against, never shipped, never a dependency. Left out of the
+    // game-test and datagen runs, where they only add load time and ways to fail.
+    if (!runningGameTest && !runningDataGen) {
+        modLocalRuntime("mezz.jei:jei-1.21.1-neoforge:${rootProject.jei_version}")
+        modLocalRuntime("squeek.appleskin:appleskin-neoforge:mc1.21-${rootProject.appleskin_version}")
+    }
 }
 
 processResources {
