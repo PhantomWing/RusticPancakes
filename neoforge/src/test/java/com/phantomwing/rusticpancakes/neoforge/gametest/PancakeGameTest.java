@@ -78,47 +78,29 @@ public final class PancakeGameTest {
     }
 
     /**
-     * The last pancake comes out once and leaves the tray behind. Rustic Delight breaks the block there
-     * instead, without loot so the pancake isn't dropped a second time, and loses the bowl with it.
+     * The last pancake comes out once, into the inventory, and the bowl it sat on drops beside it.
+     * Rustic Delight breaks the block there without loot, so the pancake isn't dropped a second time,
+     * and loses the bowl with it.
      */
-    public static void theLastPancakeLeavesAnEmptyTray(GameTestHelper helper) {
+    public static void theLastPancakeComesOutOnceAndDropsTheBowl(GameTestHelper helper) {
         withPlayer(helper, player -> {
             placeStack(helper, ModBlocks.PANCAKES.get(), 1);
 
             click(helper, player);
 
-            expectPancakes(helper, 0);
-            expectCount(helper, player, ModItems.PANCAKE.get(), 1, "taking the last pancake");
-            helper.succeed();
-        });
-    }
-
-    /** Taking up an empty tray breaks it, and its bowl drops beside it. */
-    public static void takingUpAnEmptyTrayDropsTheBowl(GameTestHelper helper) {
-        withPlayer(helper, player -> {
-            placeStack(helper, ModBlocks.PANCAKES.get(), 0);
-
-            click(helper, player);
-
             if (!helper.getBlockState(STACK).isAir()) {
-                fail(helper, "taking up an empty tray should leave nothing behind, found " + helper.getBlockState(STACK));
+                fail(helper, "taking the last pancake should leave no stack behind, found " + helper.getBlockState(STACK));
                 return;
             }
-            whenDropped(helper, Items.BOWL, DROP_TICKS, helper::succeed);
-        });
-    }
-
-    public static void aPancakeGoesBackOnAnEmptyTray(GameTestHelper helper) {
-        withPlayer(helper, player -> {
-            placeStack(helper, ModBlocks.PANCAKES.get(), 0);
-            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(ModItems.PANCAKE.get(), 3));
-            player.setShiftKeyDown(true);
-
-            click(helper, player);
-
-            expectPancakes(helper, 1);
-            expectCount(helper, player, ModItems.PANCAKE.get(), 2, "putting a pancake on an empty tray");
-            helper.succeed();
+            expectCount(helper, player, ModItems.PANCAKE.get(), 1, "taking the last pancake");
+            // Once the bowl turns up, a search finds what was dropped, so the pancake not turning up means something.
+            whenDropped(helper, Items.BOWL, DROP_TICKS, () -> {
+                if (droppedNear(helper, ModItems.PANCAKE.get()) > 0) {
+                    fail(helper, "taking the last pancake also dropped a pancake on the ground");
+                    return;
+                }
+                helper.succeed();
+            });
         });
     }
 
@@ -151,10 +133,7 @@ public final class PancakeGameTest {
         });
     }
 
-    /**
-     * A whole crafted plate breaks into the block itself; any other height into its pancakes and the
-     * bowl, and an empty tray into the bowl alone.
-     */
+    /** A whole crafted plate breaks into the block itself; any other height into its pancakes and the bowl. */
     public static void breakingAStackDropsWhatIsLeft(GameTestHelper helper) {
         Block pancakes = ModBlocks.PANCAKES.get();
         Item pancake = ModItems.PANCAKE.get();
@@ -162,7 +141,6 @@ public final class PancakeGameTest {
         expectDrops(helper, 6, List.of(new ItemStack(pancakes.asItem())));
         expectDrops(helper, 4, List.of(new ItemStack(pancake, 4), new ItemStack(Items.BOWL)));
         expectDrops(helper, 1, List.of(new ItemStack(pancake, 1), new ItemStack(Items.BOWL)));
-        expectDrops(helper, 0, List.of(new ItemStack(Items.BOWL)));
         expectDrops(helper, 9, List.of(new ItemStack(pancake, 9), new ItemStack(Items.BOWL)));
         expectDrops(helper, 12, List.of(new ItemStack(pancake, 12), new ItemStack(Items.BOWL)));
         helper.succeed();
@@ -170,11 +148,10 @@ public final class PancakeGameTest {
 
     /**
      * {@code servings} 0 to 5 still mean the servings taken off a plate of 6, as they did before stacks
-     * could grow, so a stack placed in an existing world keeps its height. 6 to 11 hold 7 to 12, and 12
-     * is the empty tray.
+     * could grow, so a stack placed in an existing world keeps its height. 6 to 11 hold 7 to 12.
      */
     public static void placedStacksKeepTheirHeight(GameTestHelper helper) {
-        int[] expected = {6, 5, 4, 3, 2, 1, 7, 8, 9, 10, 11, 12, 0};
+        int[] expected = {6, 5, 4, 3, 2, 1, 7, 8, 9, 10, 11, 12};
         for (int servings = 0; servings < expected.length; servings++) {
             int present = PancakeBlock.pancakesPresentFor(servings);
             if (present != expected[servings]) {
@@ -268,15 +245,20 @@ public final class PancakeGameTest {
      * can take a tick or two to show up in an entity search, so it is looked for again for a while.
      */
     private static void whenDropped(GameTestHelper helper, Item item, int ticksLeft, Runnable then) {
-        AABB around = new AABB(helper.absolutePos(STACK)).inflate(2.0);
-        boolean found = helper.getLevel().getEntitiesOfClass(ItemEntity.class, around).stream()
-                .anyMatch(entity -> entity.getItem().is(item));
-        if (found) {
+        if (droppedNear(helper, item) > 0) {
             then.run();
         } else if (ticksLeft <= 0) {
             fail(helper, "no " + item + " was dropped beside the stack");
         } else {
             helper.runAfterDelay(1, () -> whenDropped(helper, item, ticksLeft - 1, then));
         }
+    }
+
+    private static int droppedNear(GameTestHelper helper, Item item) {
+        AABB around = new AABB(helper.absolutePos(STACK)).inflate(2.0);
+        return helper.getLevel().getEntitiesOfClass(ItemEntity.class, around).stream()
+                .filter(entity -> entity.getItem().is(item))
+                .mapToInt(entity -> entity.getItem().getCount())
+                .sum();
     }
 }
