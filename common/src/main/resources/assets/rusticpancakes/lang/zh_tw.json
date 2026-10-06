@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "糖漿",
   "item.rusticpancakes.vegetable_pancake": "蔬菜煎餅",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "煎餅",
+  "tag.item.c.foods.milk": "牛奶",
+  "tag.item.c.foods.pumpkin": "南瓜",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "櫻花配料",
+  "tag.item.rusticpancakes.pancakes": "煎餅",
+  "tag.item.rusticpancakes.syrup": "糖漿",
+  "tag.item.rusticpancakes.syrup_ingredients": "糖漿配料",
   "tooltip.rusticpancakes.placeable": "可放置"
 }

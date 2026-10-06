@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Сироп",
   "item.rusticpancakes.vegetable_pancake": "Млинець з овочами",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Млинці",
+  "tag.item.c.foods.milk": "Молоко",
+  "tag.item.c.foods.pumpkin": "Гарбузи",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Інгредієнти з вишні",
+  "tag.item.rusticpancakes.pancakes": "Млинці",
+  "tag.item.rusticpancakes.syrup": "Сироп",
+  "tag.item.rusticpancakes.syrup_ingredients": "Інгредієнти для сиропу",
   "tooltip.rusticpancakes.placeable": "Можна поставити"
 }

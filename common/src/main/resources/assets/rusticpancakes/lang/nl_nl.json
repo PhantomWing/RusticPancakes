@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Stroop",
   "item.rusticpancakes.vegetable_pancake": "Groente pannenkoek",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Pannenkoeken",
+  "tag.item.c.foods.milk": "Melk",
+  "tag.item.c.foods.pumpkin": "Pompoenen",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Kersenbloesem ingrediënten",
+  "tag.item.rusticpancakes.pancakes": "Pannenkoeken",
+  "tag.item.rusticpancakes.syrup": "Stroop",
+  "tag.item.rusticpancakes.syrup_ingredients": "Ingrediënten voor stroop",
   "tooltip.rusticpancakes.placeable": "Plaatsbaar"
 }

@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "シロップ",
   "item.rusticpancakes.vegetable_pancake": "ベジパンケーキ",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "パンケーキ",
+  "tag.item.c.foods.milk": "牛乳",
+  "tag.item.c.foods.pumpkin": "かぼちゃ",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "サクラの材料",
+  "tag.item.rusticpancakes.pancakes": "パンケーキ",
+  "tag.item.rusticpancakes.syrup": "シロップ",
+  "tag.item.rusticpancakes.syrup_ingredients": "シロップの材料",
   "tooltip.rusticpancakes.placeable": "設置可能"
 }

@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Syrup",
   "item.rusticpancakes.vegetable_pancake": "Vegetable Pancake",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Pancakes",
+  "tag.item.c.foods.milk": "Milk",
+  "tag.item.c.foods.pumpkin": "Pumpkins",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Cherry Blossom Ingredients",
+  "tag.item.rusticpancakes.pancakes": "Pancakes",
+  "tag.item.rusticpancakes.syrup": "Syrup",
+  "tag.item.rusticpancakes.syrup_ingredients": "Syrup Ingredients",
   "tooltip.rusticpancakes.placeable": "Placeable"
 }

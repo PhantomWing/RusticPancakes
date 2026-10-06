@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Сироп",
   "item.rusticpancakes.vegetable_pancake": "Көкөністі құймақ",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Құймақтар",
+  "tag.item.c.foods.milk": "Сүт",
+  "tag.item.c.foods.pumpkin": "Асқабақтар",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Шие гүлі ингредиенттері",
+  "tag.item.rusticpancakes.pancakes": "Құймақтар",
+  "tag.item.rusticpancakes.syrup": "Сироп",
+  "tag.item.rusticpancakes.syrup_ingredients": "Сироп ингредиенттері",
   "tooltip.rusticpancakes.placeable": "Қоюға болады"
 }

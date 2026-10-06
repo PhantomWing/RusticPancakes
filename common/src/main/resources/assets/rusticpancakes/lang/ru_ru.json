@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Сироп",
   "item.rusticpancakes.vegetable_pancake": "Овощной блин",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Блины",
+  "tag.item.c.foods.milk": "Молоко",
+  "tag.item.c.foods.pumpkin": "Тыквы",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Ингредиенты с цветками вишни",
+  "tag.item.rusticpancakes.pancakes": "Блины",
+  "tag.item.rusticpancakes.syrup": "Сироп",
+  "tag.item.rusticpancakes.syrup_ingredients": "Ингредиенты сиропа",
   "tooltip.rusticpancakes.placeable": "Можно поставить"
 }

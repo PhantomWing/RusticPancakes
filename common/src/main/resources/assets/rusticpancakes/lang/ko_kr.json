@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "시럽",
   "item.rusticpancakes.vegetable_pancake": "야채 팬케잌",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "팬케이크",
+  "tag.item.c.foods.milk": "우유",
+  "tag.item.c.foods.pumpkin": "호박",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "벚꽃 재료",
+  "tag.item.rusticpancakes.pancakes": "팬케이크",
+  "tag.item.rusticpancakes.syrup": "시럽",
+  "tag.item.rusticpancakes.syrup_ingredients": "시럽 재료",
   "tooltip.rusticpancakes.placeable": "설치 가능"
 }

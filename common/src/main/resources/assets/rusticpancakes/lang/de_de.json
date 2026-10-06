@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Sirup",
   "item.rusticpancakes.vegetable_pancake": "Gemüsepfannkuchen",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Pfannkuchen",
+  "tag.item.c.foods.milk": "Milch",
+  "tag.item.c.foods.pumpkin": "Kürbisse",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Kirschblüten-Zutaten",
+  "tag.item.rusticpancakes.pancakes": "Pfannkuchen",
+  "tag.item.rusticpancakes.syrup": "Sirup",
+  "tag.item.rusticpancakes.syrup_ingredients": "Zutaten für Sirup",
   "tooltip.rusticpancakes.placeable": "Platzierbar"
 }

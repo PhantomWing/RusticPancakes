@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Siro",
   "item.rusticpancakes.vegetable_pancake": "Bánh nướng chảo chay",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Bánh nướng chảo",
+  "tag.item.c.foods.milk": "Sữa",
+  "tag.item.c.foods.pumpkin": "Bí ngô",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Nguyên liệu hoa anh đào",
+  "tag.item.rusticpancakes.pancakes": "Bánh nướng chảo",
+  "tag.item.rusticpancakes.syrup": "Siro",
+  "tag.item.rusticpancakes.syrup_ingredients": "Nguyên liệu siro",
   "tooltip.rusticpancakes.placeable": "Có thể đặt"
 }

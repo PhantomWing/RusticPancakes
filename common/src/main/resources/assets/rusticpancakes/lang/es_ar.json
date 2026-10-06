@@ -22,5 +22,12 @@
   "item.rusticpancakes.syrup": "Almíbar",
   "item.rusticpancakes.vegetable_pancake": "Panqueque con vegetales",
   "itemGroup.rusticpancakes": "Rustic Pancakes",
+  "tag.block.rusticpancakes.pancakes": "Panqueques",
+  "tag.item.c.foods.milk": "Leche",
+  "tag.item.c.foods.pumpkin": "Calabazas",
+  "tag.item.rusticpancakes.cherry_blossom_ingredients": "Ingredientes de cerezo",
+  "tag.item.rusticpancakes.pancakes": "Panqueques",
+  "tag.item.rusticpancakes.syrup": "Almíbar",
+  "tag.item.rusticpancakes.syrup_ingredients": "Ingredientes de almíbar",
   "tooltip.rusticpancakes.placeable": "Colocable"
 }
