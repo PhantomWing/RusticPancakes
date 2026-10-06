@@ -57,9 +57,9 @@ public class BlockLootTables extends BlockLootSubProvider {
     }
 
     /**
-     * A pancake stack holds 1 to {@link PancakeBlock#MAX_TOTAL_SERVINGS} pancakes. Breaking one that
+     * A pancake stack holds 0 to {@link PancakeBlock#MAX_TOTAL_SERVINGS} pancakes. Breaking one that
      * is exactly a crafted plate returns the placeable block; any other height returns the loose
-     * pancakes plus the bowl.
+     * pancakes plus the bowl, and an empty tray the bowl alone.
      */
     private LootTable.Builder createPancakeDrops(Block block, ItemLike pancakeItem) {
         LootItemCondition.Builder isCraftedPlate = servingsIs(block, 0);

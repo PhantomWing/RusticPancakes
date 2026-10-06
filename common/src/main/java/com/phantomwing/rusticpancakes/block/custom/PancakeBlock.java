@@ -42,13 +42,17 @@ public class PancakeBlock extends Block {
     /** The tallest stack that still fits inside a single block. */
     public static final int MAX_TOTAL_SERVINGS = 12;
 
+    /** The {@link #SERVINGS} value of a tray whose last pancake has been taken. */
+    public static final int EMPTY = MAX_TOTAL_SERVINGS;
+
     /**
-     * Stack height, stored in two halves so existing worlds keep working. Values 0-5 are the
-     * original "servings eaten off a plate of {@link #MAX_SERVINGS}" and are left untouched, so a
-     * saved block still means exactly what it did. Values 6-11 continue past a full plate and hold
-     * 7-12 pancakes. Use {@link #getPancakesPresent} rather than reading this directly.
+     * Stack height, stored in parts so existing worlds keep working. Values 0-5 are the original
+     * "servings eaten off a plate of {@link #MAX_SERVINGS}" and are left untouched, so a saved block
+     * still means exactly what it did. Values 6-11 continue past a full plate and hold 7-12 pancakes,
+     * and {@link #EMPTY} is the tray left behind once they are all gone. Use {@link #getPancakesPresent}
+     * rather than reading this directly.
      */
-    public static final IntegerProperty SERVINGS = IntegerProperty.create("servings", 0, MAX_TOTAL_SERVINGS - 1);
+    public static final IntegerProperty SERVINGS = IntegerProperty.create("servings", 0, EMPTY);
 
     public final Supplier<Item> servingItem;
 
@@ -58,10 +62,10 @@ public class PancakeBlock extends Block {
 
     private static VoxelShape[] buildShapes() {
         VoxelShape[] shapes = new VoxelShape[MAX_TOTAL_SERVINGS + 1];
-        for (int present = 0; present < shapes.length; present++) {
-            double top = 2.0D + Math.max(present, 1);
+        shapes[0] = PLATE_SHAPE;
+        for (int present = 1; present < shapes.length; present++) {
             shapes[present] = Shapes.joinUnoptimized(PLATE_SHAPE,
-                    Block.box(3.0D, 2.0D, 3.0D, 13.0D, top, 13.0D), BooleanOp.OR);
+                    Block.box(3.0D, 2.0D, 3.0D, 13.0D, 2.0D + present, 13.0D), BooleanOp.OR);
         }
         return shapes;
     }
@@ -82,10 +86,16 @@ public class PancakeBlock extends Block {
 
     /** Decodes the {@link #SERVINGS} value: eaten-from-a-plate below {@link #MAX_SERVINGS}, stacked above it. */
     public static int pancakesPresentFor(int servings) {
+        if (servings == EMPTY) {
+            return 0;
+        }
         return servings < MAX_SERVINGS ? MAX_SERVINGS - servings : servings + 1;
     }
 
-    private static int servingsFor(int pancakesPresent) {
+    public static int servingsFor(int pancakesPresent) {
+        if (pancakesPresent == 0) {
+            return EMPTY;
+        }
         return pancakesPresent <= MAX_SERVINGS ? MAX_SERVINGS - pancakesPresent : pancakesPresent - 1;
     }
 
@@ -95,6 +105,12 @@ public class PancakeBlock extends Block {
         // block interaction when sneaking with a full hand, so ModEvents runs this itself.
         if (player.isSecondaryUseActive() && heldStack.is(this.servingItem.get())) {
             return addServing(level, pos, state, heldStack, player);
+        }
+
+        // An empty tray is taken up whole, leaving its bowl, as a Farmer's Delight feast's leftovers are.
+        if (getPancakesPresent(state) == 0) {
+            level.destroyBlock(pos, true, player);
+            return ItemInteractionResult.SUCCESS;
         }
 
         // Everything else takes a pancake, the same way Farmer's Delight feasts hand out servings.
@@ -157,16 +173,10 @@ public class PancakeBlock extends Block {
         }
     }
 
-    /** Takes the topmost pancake off, destroying the block once the plate is empty. */
+    /** Takes the topmost pancake off. The last one leaves the empty tray behind, bowl and all. */
     private void removeServing(Level level, BlockPos pos, BlockState state) {
         int present = getPancakesPresent(state);
-        if (present > 1) {
-            level.setBlock(pos, state.setValue(SERVINGS, servingsFor(present - 1)), Block.UPDATE_ALL);
-        } else {
-            // No loot: takeServing already handed the player this last pancake, and the loot table
-            // would drop the block's remaining serving a second time.
-            level.destroyBlock(pos, false);
-        }
+        level.setBlock(pos, state.setValue(SERVINGS, servingsFor(present - 1)), Block.UPDATE_ALL);
     }
 
     public ItemStack getServingItem() {

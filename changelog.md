@@ -4,6 +4,7 @@
 - Rustic Pancakes now runs on both Fabric and NeoForge. Fabric gets everything from 1.1.0 as well: Pancakes, Pumpkin Pancakes, Syrup and single pancakes
 - Pancakes can be put back onto a placed stack by sneaking and right-clicking with a matching pancake, up to 12 high
 - Added particles when taking a pancake from a placed stack
+- Taking the last pancake leaves the empty tray behind: take it up or break it to get the bowl back
 
 ### Changes
 - Now requires Architectury API
