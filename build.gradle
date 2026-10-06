@@ -82,6 +82,14 @@ allprojects {
             name = "ModMaven"
             url = "https://modmaven.dev"
         }
+
+        // Cloth Config (dev-runtime only: AppleSkin needs it on Fabric). Scoped to its group so this
+        // maven doesn't broaden resolution for anything else.
+        maven {
+            name = "shedaniel"
+            url = "https://maven.shedaniel.me/"
+            content { includeGroup "me.shedaniel.cloth" }
+        }
     }
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(21)
