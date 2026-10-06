@@ -23,6 +23,7 @@ and CurseForge IDs are in `mods.json`; add the block and copy them before publis
 - Everything but the entry points lives in `common`. Registration goes through Architectury's `DeferredRegister`; there is no access widener and no mixin.
 - Common code compiles against vanilla, so NeoForge's extensions (`ItemStack#getFoodProperties`, `ItemTags.create`, the `Supplier` overload of `FoodProperties.Builder#effect`) are not available there.
 - Datagen: `:neoforge:runData`. Output: `common/src/generated/resources`, never hand-edited, and shipped to both loaders, so a recipe may only use ingredients both read: no `neoforge:difference`. The run finishes its providers in a second and then doesn't exit; stop it once the log says `Caching: total files`.
-- No game tests yet. Writing the first one for whatever is ported next is the highest-value test available (`verification.md`).
+- Game tests in `neoforge/src/test`, run with `:neoforge:runGameTest`, laid out as The Lead Age's are: a body in `PancakeGameTest`, an entry in `GameTests`, and whatever differs between versions in `TestCompat`. They click through `ServerPlayerGameMode#useItemOn`, so the sneak-to-add handler runs; the Fabric side of that handler has no test.
+- A stack's `servings` is packed so worlds from before 1.2 keep their stacks (`PancakeBlock`): never renumber it.
 - No `publishMods` on this line: add the block before publishing it through the plugin (`publishing.md`).
 - GitHub Actions: `build.yml`.

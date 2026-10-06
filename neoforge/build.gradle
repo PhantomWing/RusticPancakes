@@ -13,6 +13,15 @@ def datagenOutput = rootProject.file('common/src/generated/resources/').absolute
 def datagenExisting = rootProject.file('common/src/main/resources/').absolutePath
 
 loom {
+    // The game tests join the dev mod through Loom's own `main` group. A second group for the same mod
+    // hands the loader two copies, and some FML releases keep the one without the tests (none run).
+    // Dev-runtime only: the shipped jar is still built from `main`.
+    mods {
+        named('main') {
+            sourceSet sourceSets.test
+        }
+    }
+
     runs {
         // Datagen output is shared by both loaders, so it goes to common.
         //   ./gradlew :neoforge:runData
@@ -20,6 +29,18 @@ loom {
             data()
             name = "Data Generation"
             programArgs('--mod', datagenModId, '--all', '--output', datagenOutput, '--existing', datagenExisting)
+        }
+
+        // Runs every game test in the mod's namespace headless, prints PASS/FAIL, and exits.
+        //   ./gradlew :neoforge:runGameTest
+        gameTest {
+            server()
+            name = "Game Test"
+            runDir "run/gametest"
+            source sourceSets.test
+            property 'neoforge.enableGameTest', 'true'
+            property 'neoforge.gameTestServer', 'true'
+            property 'neoforge.enabledGameTestNamespaces', datagenModId
         }
     }
 }
@@ -30,6 +51,14 @@ configurations {
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
     developmentNeoForge.extendsFrom common
+}
+
+// Game tests, kept out of `main` so neither the test classes nor their structure ship.
+sourceSets {
+    test {
+        compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.main.output
+    }
 }
 
 dependencies {
