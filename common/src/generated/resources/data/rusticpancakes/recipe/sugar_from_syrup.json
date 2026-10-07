@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "rusticpancakes:syrup"
-    }
+    "rusticpancakes:syrup"
   ],
   "result": {
     "count": 3,

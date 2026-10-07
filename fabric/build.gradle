@@ -24,8 +24,7 @@ dependencies {
     shadowCommon(project(path: ':common', configuration: 'transformProductionFabric')) { transitive false }
 
     // Dev-runtime niceties: never compiled against, never shipped, never a dependency.
-    modLocalRuntime("mezz.jei:jei-1.21.1-fabric:${rootProject.jei_version}")
-    modLocalRuntime("squeek.appleskin:appleskin-fabric:mc1.21-3.0.6")
+    modLocalRuntime("squeek.appleskin:appleskin-fabric:${rootProject.appleskin_fabric_version}")
     // AppleSkin's Fabric build needs Cloth Config for its settings.
     modLocalRuntime("me.shedaniel.cloth:cloth-config-fabric:${rootProject.cloth_config_version}") {
         exclude group: "net.fabricmc.fabric-api"

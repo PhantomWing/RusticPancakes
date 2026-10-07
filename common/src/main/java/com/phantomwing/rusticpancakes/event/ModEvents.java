@@ -1,9 +1,8 @@
 package com.phantomwing.rusticpancakes.event;
 
 import com.phantomwing.rusticpancakes.block.custom.PancakeBlock;
-import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.InteractionEvent;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -19,28 +18,28 @@ public class ModEvents {
      *
      * <p>Vanilla skips a block's own interaction while the player sneaks with a full hand, which is
      * exactly the case this needs, so run {@link PancakeBlock#useItemOn} ourselves before that check.
-     * Interrupting with false at the top of the stack keeps the held pancake from being eaten instead,
+     * Failing at the top of the stack keeps the held pancake from being eaten instead,
      * and on Fabric keeps the client from sending the click at all.
      */
     private static void allowPuttingPancakesBack() {
         InteractionEvent.RIGHT_CLICK_BLOCK.register((player, hand, pos, face) -> {
             if (!player.isSecondaryUseActive()) {
-                return EventResult.pass();
+                return InteractionResult.PASS;
             }
 
             BlockState state = player.level().getBlockState(pos);
             if (!(state.getBlock() instanceof PancakeBlock pancake)) {
-                return EventResult.pass();
+                return InteractionResult.PASS;
             }
 
             ItemStack heldStack = player.getItemInHand(hand);
             if (!heldStack.is(pancake.servingItem.get())) {
-                return EventResult.pass();
+                return InteractionResult.PASS;
             }
 
             BlockHitResult hit = new BlockHitResult(Vec3.atCenterOf(pos), face, pos, false);
-            ItemInteractionResult result = pancake.useItemOn(heldStack, state, player.level(), pos, player, hand, hit);
-            return EventResult.interrupt(result == ItemInteractionResult.SUCCESS);
+            InteractionResult result = pancake.useItemOn(heldStack, state, player.level(), pos, player, hand, hit);
+            return result == InteractionResult.SUCCESS ? InteractionResult.SUCCESS : InteractionResult.FAIL;
         });
     }
 }

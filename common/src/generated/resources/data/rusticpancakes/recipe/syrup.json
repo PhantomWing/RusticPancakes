@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:glass_bottle"
-    },
-    {
-      "tag": "rusticpancakes:syrup_ingredients"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "minecraft:glass_bottle",
+    "#rusticpancakes:syrup_ingredients",
+    "minecraft:sugar"
   ],
   "result": {
     "count": 1,

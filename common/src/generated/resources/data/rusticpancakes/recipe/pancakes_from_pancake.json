@@ -2,27 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "rusticpancakes:pancake"
-    },
-    {
-      "item": "rusticpancakes:pancake"
-    },
-    {
-      "item": "rusticpancakes:pancake"
-    },
-    {
-      "item": "rusticpancakes:pancake"
-    },
-    {
-      "item": "rusticpancakes:pancake"
-    },
-    {
-      "item": "rusticpancakes:pancake"
-    },
-    {
-      "item": "minecraft:bowl"
-    }
+    "rusticpancakes:pancake",
+    "rusticpancakes:pancake",
+    "rusticpancakes:pancake",
+    "rusticpancakes:pancake",
+    "rusticpancakes:pancake",
+    "rusticpancakes:pancake",
+    "minecraft:bowl"
   ],
   "result": {
     "count": 1,

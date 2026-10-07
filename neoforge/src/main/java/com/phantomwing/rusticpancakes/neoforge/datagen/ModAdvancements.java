@@ -8,7 +8,9 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -32,10 +34,11 @@ public class ModAdvancements implements AdvancementSubProvider {
                 .addCriterion("any_item", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[0]))
                 .save(saver, id("root"));
 
+        HolderGetter<Item> items = registries.lookupOrThrow(Registries.ITEM);
         AdvancementHolder batter = obtainMatching(saver, root, "batter", ModItems.BATTER.get(),
-                ItemPredicate.Builder.item().of(ModItems.BATTER.get()));
-        obtainMatching(saver, batter, "syrup", ModItems.SYRUP.get(), ItemPredicate.Builder.item().of(ModTags.Items.SYRUP));
-        obtainMatching(saver, batter, "pancakes", ModItems.PANCAKES.get(), ItemPredicate.Builder.item().of(ModTags.Items.PANCAKES));
+                ItemPredicate.Builder.item().of(items, ModItems.BATTER.get()));
+        obtainMatching(saver, batter, "syrup", ModItems.SYRUP.get(), ItemPredicate.Builder.item().of(items, ModTags.Items.SYRUP));
+        obtainMatching(saver, batter, "pancakes", ModItems.PANCAKES.get(), ItemPredicate.Builder.item().of(items, ModTags.Items.PANCAKES));
     }
 
     /**

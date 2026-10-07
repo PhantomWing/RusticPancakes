@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "B": {
-      "item": "minecraft:bowl"
-    },
-    "M": {
-      "item": "rusticpancakes:batter"
-    },
-    "T": {
-      "tag": "c:foods/milk"
-    },
-    "X": {
-      "tag": "rusticpancakes:cherry_blossom_ingredients"
-    },
-    "Y": {
-      "tag": "rusticpancakes:cherry_blossom_ingredients"
-    }
+    "B": "minecraft:bowl",
+    "M": "rusticpancakes:batter",
+    "T": "#c:foods/milk",
+    "X": "#rusticpancakes:cherry_blossom_ingredients",
+    "Y": "#rusticpancakes:cherry_blossom_ingredients"
   },
   "pattern": [
     " T ",

@@ -8,27 +8,22 @@ import java.util.function.Consumer;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.ChatFormatting;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
 public class ConsumableItem extends Item {
     private static final MutableComponent NO_EFFECTS;
@@ -44,47 +39,6 @@ public class ConsumableItem extends Item {
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity consumer) {
-        if (!level.isClientSide) {
-            this.affectConsumer(stack, level, consumer);
-        }
-
-        Item remainder = stack.getItem().getCraftingRemainingItem();
-        ItemStack containerStack = remainder == null ? ItemStack.EMPTY : new ItemStack(remainder);
-        Player player;
-        if (stack.has(DataComponents.FOOD)) {
-            super.finishUsingItem(stack, level, consumer);
-        } else {
-            player = consumer instanceof Player ? (Player)consumer : null;
-            if (player instanceof ServerPlayer) {
-                CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
-            }
-
-            if (player != null) {
-                player.awardStat(Stats.ITEM_USED.get(this));
-                if (!player.getAbilities().instabuild) {
-                    stack.shrink(1);
-                }
-            }
-        }
-
-        if (stack.isEmpty()) {
-            return containerStack;
-        } else {
-            if (consumer instanceof Player) {
-                player = (Player)consumer;
-                if (!((Player)consumer).getAbilities().instabuild && !player.getInventory().add(containerStack)) {
-                    player.drop(containerStack, false);
-                }
-            }
-
-            return stack;
-        }
-    }
-
-    public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-    }
-
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
             if (this.hasFoodEffectTooltip) {
                 Objects.requireNonNull(tooltip);
@@ -93,9 +47,13 @@ public class ConsumableItem extends Item {
     }
 
     public void addFoodEffectTooltip(ItemStack stack, Consumer<Component> tooltipAdder, float durationFactor, float tickRate) {
-        FoodProperties foodStats = stack.get(DataComponents.FOOD);
-        if (foodStats != null) {
-            List<FoodProperties.PossibleEffect> effectList = foodStats.effects();
+        // 1.21.2 moved a food's effects into its consumable component.
+        Consumable consumable = stack.get(DataComponents.CONSUMABLE);
+        if (consumable != null) {
+            List<MobEffectInstance> effectList = consumable.onConsumeEffects().stream()
+                    .filter(onConsume -> onConsume instanceof ApplyStatusEffectsConsumeEffect)
+                    .flatMap(onConsume -> ((ApplyStatusEffectsConsumeEffect) onConsume).effects().stream())
+                    .toList();
             List<Pair<Holder<Attribute>, AttributeModifier>> attributeList = Lists.newArrayList();
             MutableComponent mutableComponent;
             Iterator var8;
@@ -104,8 +62,7 @@ public class ConsumableItem extends Item {
                 tooltipAdder.accept(NO_EFFECTS);
             } else {
                 for(var8 = effectList.iterator(); var8.hasNext(); tooltipAdder.accept(mutableComponent.withStyle(effect.getCategory().getTooltipFormatting()))) {
-                    FoodProperties.PossibleEffect possibleEffect = (FoodProperties.PossibleEffect)var8.next();
-                    MobEffectInstance instance = possibleEffect.effect();
+                    MobEffectInstance instance = (MobEffectInstance)var8.next();
                     mutableComponent = Component.translatable(instance.getDescriptionId());
                     effect = (MobEffect)instance.getEffect().value();
                     effect.createModifiers(instance.getAmplifier(), (attributeHolder, attributeModifier) -> {

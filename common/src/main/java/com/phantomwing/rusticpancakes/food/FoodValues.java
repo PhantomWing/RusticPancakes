@@ -1,34 +1,22 @@
 package com.phantomwing.rusticpancakes.food;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
+/** Hunger and saturation. What eating does beyond that - effects, speed, sound - is in {@link ConsumableValues}. */
 public class FoodValues {
     // Cooking products
-    public static final FoodProperties BATTER = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.2F)
-            .effect(new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F).fast().build();
-    public static final FoodProperties SYRUP = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.2F)
-            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0, false, false), 1.0F).build();
+    public static final FoodProperties BATTER = food(2, 0.2F);
+    public static final FoodProperties SYRUP = food(2, 0.2F);
 
     // Pancakes
-    public static final FoodProperties PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.6F).build();
-    public static final FoodProperties HONEY_PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.6F)
-            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0, false, false), 1.0F).build();
-    public static final FoodProperties CHOCOLATE_PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.6F)
-            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0, false, false), 1.0F).build();
-    public static final FoodProperties CHERRY_BLOSSOM_PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.6F)
-            .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F).build();
-    public static final FoodProperties VEGETABLE_PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.6F)
-            .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0, false, false), 1.0F).build();
-    public static final FoodProperties PUMPKIN_PANCAKE = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.6F)
-            .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F).build();
+    public static final FoodProperties PANCAKE = food(4, 0.6F);
+    public static final FoodProperties HONEY_PANCAKE = food(4, 0.6F);
+    public static final FoodProperties CHOCOLATE_PANCAKE = food(4, 0.6F);
+    public static final FoodProperties CHERRY_BLOSSOM_PANCAKE = food(4, 0.6F);
+    public static final FoodProperties VEGETABLE_PANCAKE = food(4, 0.6F);
+    public static final FoodProperties PUMPKIN_PANCAKE = food(4, 0.6F);
+
+    private static FoodProperties food(int nutrition, float saturation) {
+        return new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build();
+    }
 }

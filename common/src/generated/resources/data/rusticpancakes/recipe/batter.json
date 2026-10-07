@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:bowl"
-    },
-    {
-      "tag": "c:foods/milk"
-    },
-    {
-      "tag": "c:eggs"
-    },
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:wheat"
-    }
+    "minecraft:bowl",
+    "#c:foods/milk",
+    "#c:eggs",
+    "minecraft:wheat",
+    "minecraft:wheat"
   ],
   "result": {
     "count": 1,

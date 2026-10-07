@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "rusticpancakes:cherry_blossom_pancakes"
-    }
+    "rusticpancakes:cherry_blossom_pancakes"
   ],
   "result": {
     "count": 6,

@@ -32,6 +32,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         this.tag(CommonTags.FOODS_MILK).add(Items.MILK_BUCKET);
         this.tag(CommonTags.FOODS_PUMPKIN).add(Items.PUMPKIN);
+        // Fabric API for 1.21.3 has no c:eggs, and a recipe naming a tag that doesn't exist doesn't load.
+        this.tag(Tags.Items.EGGS).add(Items.EGG);
 
         // Syrup
         this.tag(ModTags.Items.SYRUP_INGREDIENTS).add(

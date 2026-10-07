@@ -73,16 +73,6 @@ allprojects {
             url = "https://maven.ryanliptak.com/"
         }
 
-        // JEI (dev-runtime only)
-        maven {
-            name = "Jared's maven"
-            url = "https://maven.blamejared.com/"
-        }
-        maven {
-            name = "ModMaven"
-            url = "https://modmaven.dev"
-        }
-
         // Cloth Config (dev-runtime only: AppleSkin needs it on Fabric). Scoped to its group so this
         // maven doesn't broaden resolution for anything else.
         maven {

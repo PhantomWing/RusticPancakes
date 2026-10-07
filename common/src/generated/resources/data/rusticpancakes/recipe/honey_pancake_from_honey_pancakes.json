@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "rusticpancakes:honey_pancakes"
-    }
+    "rusticpancakes:honey_pancakes"
   ],
   "result": {
     "count": 6,

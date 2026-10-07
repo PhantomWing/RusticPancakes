@@ -7,8 +7,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,14 +17,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
@@ -36,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public class PancakeBlock extends Block {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     /** Pancakes on a freshly crafted plate. Also what the block item is worth in the recipes. */
     public static final Integer MAX_SERVINGS = 6;
 
@@ -91,7 +92,7 @@ public class PancakeBlock extends Block {
     }
 
     @Override
-    public @NotNull ItemInteractionResult useItemOn(ItemStack heldStack, @NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
+    public @NotNull InteractionResult useItemOn(ItemStack heldStack, @NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
         // Sneaking with a matching pancake puts one back onto the stack. Vanilla normally skips the
         // block interaction when sneaking with a full hand, so ModEvents runs this itself.
         if (player.isSecondaryUseActive() && heldStack.is(this.servingItem.get())) {
@@ -102,7 +103,7 @@ public class PancakeBlock extends Block {
         return takeServing(level, pos, state, player);
     }
 
-    protected ItemInteractionResult takeServing(Level level, BlockPos pos, BlockState state, Player player) {
+    protected InteractionResult takeServing(Level level, BlockPos pos, BlockState state, Player player) {
         // Straight into the inventory, dropping only what doesn't fit, same as FD's FeastBlock.
         if (!level.isClientSide()) {
             ItemStack serving = this.getServingItem();
@@ -120,15 +121,15 @@ public class PancakeBlock extends Block {
         // Play a sound, for taking the serving.
         level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
 
-        return ItemInteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 
     /** Puts a pancake back on, up to the height the block can show. */
-    protected ItemInteractionResult addServing(Level level, BlockPos pos, BlockState state, ItemStack heldStack, Player player) {
+    protected InteractionResult addServing(Level level, BlockPos pos, BlockState state, ItemStack heldStack, Player player) {
         int present = getPancakesPresent(state);
         if (present >= MAX_TOTAL_SERVINGS) {
             // Stacked as high as the block allows - consume so the held pancake isn't eaten instead.
-            return ItemInteractionResult.CONSUME;
+            return InteractionResult.CONSUME;
         }
 
         level.setBlock(pos, state.setValue(SERVINGS, servingsFor(present + 1)), Block.UPDATE_ALL);
@@ -139,7 +140,7 @@ public class PancakeBlock extends Block {
 
         level.playSound(null, pos, SoundEvents.WOOL_PLACE, SoundSource.PLAYERS, 0.8F, 0.8F);
 
-        return ItemInteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 
     /**
@@ -186,8 +187,8 @@ public class PancakeBlock extends Block {
     }
 
     @Override
-    public @NotNull BlockState updateShape(@NotNull BlockState stateIn, @NotNull Direction facing, @NotNull BlockState facingState, @NotNull LevelAccessor level, @NotNull BlockPos currentPos, @NotNull BlockPos facingPos) {
-        return facing == Direction.DOWN && !stateIn.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, level, currentPos, facingPos);
+    protected @NotNull BlockState updateShape(@NotNull BlockState stateIn, @NotNull LevelReader level, @NotNull ScheduledTickAccess scheduledTickAccess, @NotNull BlockPos currentPos, @NotNull Direction facing, @NotNull BlockPos facingPos, @NotNull BlockState facingState, @NotNull RandomSource random) {
+        return facing == Direction.DOWN && !stateIn.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, level, scheduledTickAccess, currentPos, facing, facingPos, facingState, random);
     }
 
     @Override

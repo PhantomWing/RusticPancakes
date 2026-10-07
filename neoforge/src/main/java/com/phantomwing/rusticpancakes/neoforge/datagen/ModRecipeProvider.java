@@ -19,18 +19,35 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
-    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider);
+    protected ModRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
+    }
+
+    /** What the data generator registers: it makes the provider once the registries are there. */
+    public static final class Runner extends RecipeProvider.Runner {
+        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+            super(output, lookupProvider);
+        }
+
+        @Override
+        protected @NotNull RecipeProvider createRecipeProvider(@NotNull HolderLookup.Provider registries, @NotNull RecipeOutput output) {
+            return new ModRecipeProvider(registries, output);
+        }
+
+        @Override
+        public @NotNull String getName() {
+            return "Rustic Pancakes recipes";
+        }
     }
 
     @Override
-    protected void buildRecipes(@NotNull RecipeOutput output) {
-        buildCraftingRecipes(output);
+    protected void buildRecipes() {
+        buildCraftingRecipes();
     }
 
-    private void buildCraftingRecipes(@NotNull RecipeOutput output) {
+    private void buildCraftingRecipes() {
         // Batter
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.BATTER.get(), 1)
+        shapeless(RecipeCategory.FOOD, ModItems.BATTER.get(), 1)
                 .requires(Items.BOWL)
                 .requires(CommonTags.FOODS_MILK)
                 .requires(Tags.Items.EGGS)
@@ -40,35 +57,35 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(output);
 
         // Syrup
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SYRUP.get(), 1)
+        shapeless(RecipeCategory.FOOD, ModItems.SYRUP.get(), 1)
                 .requires(Items.GLASS_BOTTLE)
                 .requires(ModTags.Items.SYRUP_INGREDIENTS)
                 .requires(Items.SUGAR)
                 .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
                 .save(output);
-        oneToOne(output, RecipeCategory.MISC, ModItems.SYRUP.get(), Items.SUGAR, 3);
+        oneToOne(RecipeCategory.MISC, ModItems.SYRUP.get(), Items.SUGAR, 3);
 
         // Pancakes
-        pancakeRecipes(output, ModItems.PANCAKES, ModItems.PANCAKE, Ingredient.of(ModTags.Items.SYRUP), Ingredient.of(Items.SUGAR));
-        pancakeRecipes(output, ModItems.HONEY_PANCAKES, ModItems.HONEY_PANCAKE, Ingredient.of(Items.HONEY_BOTTLE), Ingredient.of(Items.SWEET_BERRIES), Ingredient.of(Items.SUGAR));
-        pancakeRecipes(output, ModItems.CHOCOLATE_PANCAKES, ModItems.CHOCOLATE_PANCAKE, Ingredient.of(CommonTags.FOODS_MILK), Ingredient.of(Items.COCOA_BEANS));
-        pancakeRecipes(output, ModItems.VEGETABLE_PANCAKES, ModItems.VEGETABLE_PANCAKE, Ingredient.of(CommonTags.FOODS_MILK), Ingredient.of(Tags.Items.FOODS_VEGETABLE));
-        pancakeRecipes(output, ModItems.CHERRY_BLOSSOM_PANCAKES, ModItems.CHERRY_BLOSSOM_PANCAKE, Ingredient.of(CommonTags.FOODS_MILK), Ingredient.of(ModTags.Items.CHERRY_BLOSSOM_INGREDIENTS));
-        pancakeRecipes(output, ModItems.PUMPKIN_PANCAKES, ModItems.PUMPKIN_PANCAKE, Ingredient.of(ModTags.Items.SYRUP), Ingredient.of(CommonTags.FOODS_PUMPKIN), Ingredient.of(Items.SUGAR));
+        pancakeRecipes(ModItems.PANCAKES, ModItems.PANCAKE, tag(ModTags.Items.SYRUP), Ingredient.of(Items.SUGAR));
+        pancakeRecipes(ModItems.HONEY_PANCAKES, ModItems.HONEY_PANCAKE, Ingredient.of(Items.HONEY_BOTTLE), Ingredient.of(Items.SWEET_BERRIES), Ingredient.of(Items.SUGAR));
+        pancakeRecipes(ModItems.CHOCOLATE_PANCAKES, ModItems.CHOCOLATE_PANCAKE, tag(CommonTags.FOODS_MILK), Ingredient.of(Items.COCOA_BEANS));
+        pancakeRecipes(ModItems.VEGETABLE_PANCAKES, ModItems.VEGETABLE_PANCAKE, tag(CommonTags.FOODS_MILK), tag(Tags.Items.FOODS_VEGETABLE));
+        pancakeRecipes(ModItems.CHERRY_BLOSSOM_PANCAKES, ModItems.CHERRY_BLOSSOM_PANCAKE, tag(CommonTags.FOODS_MILK), tag(ModTags.Items.CHERRY_BLOSSOM_INGREDIENTS));
+        pancakeRecipes(ModItems.PUMPKIN_PANCAKES, ModItems.PUMPKIN_PANCAKE, tag(ModTags.Items.SYRUP), tag(CommonTags.FOODS_PUMPKIN), Ingredient.of(Items.SUGAR));
     }
 
-    protected static void pancakeRecipes(@NotNull RecipeOutput recipeOutput, @NotNull RegistrySupplier<Item> pancakeBlock, @NotNull RegistrySupplier<Item> singlePancake, Ingredient topping, Ingredient ingredient) {
-        pancakeRecipes(recipeOutput, pancakeBlock, singlePancake, topping, ingredient, ingredient);
+    protected void pancakeRecipes(@NotNull RegistrySupplier<Item> pancakeBlock, @NotNull RegistrySupplier<Item> singlePancake, Ingredient topping, Ingredient ingredient) {
+        pancakeRecipes(pancakeBlock, singlePancake, topping, ingredient, ingredient);
     }
 
-    protected static void pancakeRecipes(@NotNull RecipeOutput recipeOutput, @NotNull RegistrySupplier<Item> pancakeBlockItem, @NotNull RegistrySupplier<Item> singlePancakeItem, Ingredient topping, Ingredient ingredient, Ingredient ingredient2) {
+    protected void pancakeRecipes(@NotNull RegistrySupplier<Item> pancakeBlockItem, @NotNull RegistrySupplier<Item> singlePancakeItem, Ingredient topping, Ingredient ingredient, Ingredient ingredient2) {
         Item pancakeBlock = pancakeBlockItem.get();
         Item singlePancake = singlePancakeItem.get();
         var batter = ModItems.BATTER.get();
         var servingItem = Items.BOWL;
 
         // Crafting a pancake block.
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, pancakeBlock, 1)
+        shaped(RecipeCategory.FOOD, pancakeBlock, 1)
                 .pattern(" T ")
                 .pattern("XMX")
                 .pattern("YBY")
@@ -78,24 +95,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('M', batter)
                 .define('B', servingItem)
                 .unlockedBy(getHasName(batter), has(batter))
-                .save(recipeOutput);
+                .save(output);
 
         // Split a stack of pancakes into separate pancakes.
-        oneToOne(recipeOutput, RecipeCategory.MISC, pancakeBlock, singlePancake, PancakeBlock.MAX_SERVINGS);
+        oneToOne(RecipeCategory.MISC, pancakeBlock, singlePancake, PancakeBlock.MAX_SERVINGS);
 
         // Combine separate pancakes together into a single stack
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, pancakeBlock)
+        shapeless(RecipeCategory.FOOD, pancakeBlock)
                 .requires(singlePancake, PancakeBlock.MAX_SERVINGS)
                 .requires(servingItem) // Pancakes are always placed on a bowl
                 .unlockedBy(getHasName(singlePancake), has(singlePancake))
-                .save(recipeOutput, getRecipeName(singlePancake, pancakeBlock));
+                .save(output, getRecipeName(singlePancake, pancakeBlock));
     }
 
-    protected static void oneToOne(RecipeOutput recipeOutput, RecipeCategory category, ItemLike item, ItemLike result, int count) {
-        ShapelessRecipeBuilder.shapeless(category, result, count)
+    protected void oneToOne(RecipeCategory category, ItemLike item, ItemLike result, int count) {
+        shapeless(category, result, count)
                 .requires(item)
                 .unlockedBy(getHasName(item), has(item))
-                .save(recipeOutput, getRecipeName(item, result));
+                .save(output, getRecipeName(item, result));
     }
 
     protected static String getRecipeName(ItemLike item, ItemLike result) {
