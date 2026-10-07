@@ -18,7 +18,8 @@ public final class GameTests {
             test("sneaking_with_a_pancake_puts_it_back", PancakeGameTest::sneakingWithAPancakePutsItBack).maxTicks(200),
             test("a_stack_stops_at_twelve", PancakeGameTest::aStackStopsAtTwelve).maxTicks(200),
             test("breaking_a_stack_drops_what_is_left", PancakeGameTest::breakingAStackDropsWhatIsLeft),
-            test("placed_stacks_keep_their_height", PancakeGameTest::placedStacksKeepTheirHeight));
+            test("placed_stacks_keep_their_height", PancakeGameTest::placedStacksKeepTheirHeight),
+            test("eating_leaves_the_bowl_or_bottle", PancakeGameTest::eatingLeavesTheBowlOrBottle).maxTicks(200));
 
     private GameTests() {
     }

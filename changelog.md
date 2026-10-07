@@ -1,3 +1,9 @@
+# 1.2.1
+
+### Fixes
+- Eating Batter now gives its bowl back, as drinking Syrup gives back its bottle
+
+
 # 1.2.0
 
 ### Additions

@@ -3,12 +3,13 @@ package com.phantomwing.rusticpancakes.food;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Items;
 
 public class FoodValues {
     // Cooking products
     public static final FoodProperties BATTER = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.2F)
-            .effect(new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F).fast().build();
+            .effect(new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F).fast().usingConvertsTo(Items.BOWL).build();
     public static final FoodProperties SYRUP = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.2F)
             .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0, false, false), 1.0F).build();

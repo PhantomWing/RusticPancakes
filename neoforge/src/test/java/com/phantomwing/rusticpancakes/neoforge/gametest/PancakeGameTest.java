@@ -166,7 +166,41 @@ public final class PancakeGameTest {
         helper.succeed();
     }
 
+    /** Eating Batter leaves its bowl and drinking Syrup its bottle, as vanilla's stews and potions do. */
+    public static void eatingLeavesTheBowlOrBottle(GameTestHelper helper) {
+        withPlayer(helper, player -> {
+            expectLeaves(helper, player, ModItems.BATTER.get(), Items.BOWL);
+            expectLeaves(helper, player, ModItems.SYRUP.get(), Items.GLASS_BOTTLE);
+            helper.succeed();
+        });
+    }
+
     // ---------------------------------------------------------------- helpers
+
+    /**
+     * The last one in hand turns into {@code container}; one eaten from a stack of two leaves the other in
+     * hand and puts {@code container} in the inventory.
+     */
+    private static void expectLeaves(GameTestHelper helper, ServerPlayer player, Item food, Item container) {
+        player.getInventory().clearContent();
+        ItemStack last = new ItemStack(food);
+        player.setItemInHand(InteractionHand.MAIN_HAND, last);
+        ItemStack left = last.finishUsingItem(helper.getLevel(), player);
+        if (!left.is(container)) {
+            fail(helper, "eating the last " + food + " should leave a " + container + " in hand, left " + left);
+            return;
+        }
+
+        player.getInventory().clearContent();
+        ItemStack two = new ItemStack(food, 2);
+        player.setItemInHand(InteractionHand.MAIN_HAND, two);
+        ItemStack rest = two.finishUsingItem(helper.getLevel(), player);
+        if (!rest.is(food) || rest.getCount() != 1) {
+            fail(helper, "eating one " + food + " of two should leave one in hand, left " + rest);
+            return;
+        }
+        expectCount(helper, player, container, 1, "eating one " + food + " of two");
+    }
 
     /** Runs {@code body} with a survival mock player, once the entities around spawn have loaded. */
     private static void withPlayer(GameTestHelper helper, Consumer<ServerPlayer> body) {
