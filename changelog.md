@@ -20,6 +20,7 @@
 ### Fixes
 - Fixed the topping floating above a full stack of Chocolate or Vegetable Pancakes
 - Fixed a malformed Japanese translation file, and the creative tab being called Rustic Delight in Japanese
+- Eating Batter now gives its bowl back, as drinking Syrup gives back its bottle
 
 
 # 1.1.0

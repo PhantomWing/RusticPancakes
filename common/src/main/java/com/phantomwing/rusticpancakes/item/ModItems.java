@@ -30,7 +30,7 @@ public class ModItems {
     public static final RegistrySupplier<Item> SYRUP = registerWithTab("syrup", props -> new ConsumableItem(props, true),
             bottleItem().food(FoodValues.SYRUP, ConsumableValues.SYRUP).usingConvertsTo(Items.GLASS_BOTTLE));
     public static final RegistrySupplier<Item> BATTER = registerWithTab("batter", Item::new,
-            bowlItem().food(FoodValues.BATTER, ConsumableValues.BATTER));
+            bowlItem().food(FoodValues.BATTER, ConsumableValues.BATTER).usingConvertsTo(Items.BOWL));
 
     // Pancakes
     public static final RegistrySupplier<Item> PANCAKES = registerBlockWithTab(ModBlocks.PANCAKES);
