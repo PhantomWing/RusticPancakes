@@ -28,8 +28,10 @@ loom {
     runs {
         // Datagen output is shared by both loaders, so it goes to common.
         //   ./gradlew :neoforge:runData
+        // NeoForge 21.4 split the `data` run type into clientData and serverData, and data() names the old one. The
+        // client run is a full client, so with --all it emits the models and the server data together.
         data {
-            data()
+            clientData()
             name = "Data Generation"
             programArgs('--mod', datagenModId, '--all', '--output', datagenOutput, '--existing', datagenExisting)
         }
@@ -75,6 +77,7 @@ dependencies {
     // game-test and datagen runs, where they only add load time and ways to fail.
     if (!runningGameTest && !runningDataGen) {
         modLocalRuntime("squeek.appleskin:appleskin-neoforge:${rootProject.appleskin_neoforge_version}")
+        modLocalRuntime("mezz.jei:jei-1.21.4-neoforge:${rootProject.jei_neoforge_version}")
     }
 }
 

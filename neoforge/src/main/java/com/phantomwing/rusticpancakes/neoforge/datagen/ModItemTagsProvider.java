@@ -12,14 +12,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
-    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, blockTags, RusticPancakes.MOD_ID, existingFileHelper);
+    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags) {
+        super(output, lookupProvider, blockTags, RusticPancakes.MOD_ID);
     }
 
     @Override
@@ -32,7 +30,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         this.tag(CommonTags.FOODS_MILK).add(Items.MILK_BUCKET);
         this.tag(CommonTags.FOODS_PUMPKIN).add(Items.PUMPKIN);
-        // Fabric API for 1.21.3 has no c:eggs, and a recipe naming a tag that doesn't exist doesn't load.
+        // Fabric API had no c:eggs before 1.21.4, and a recipe naming a tag that doesn't exist doesn't load.
         this.tag(Tags.Items.EGGS).add(Items.EGG);
 
         // Syrup

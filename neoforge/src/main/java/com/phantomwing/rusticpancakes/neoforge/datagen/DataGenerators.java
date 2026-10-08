@@ -2,33 +2,32 @@ package com.phantomwing.rusticpancakes.neoforge.datagen;
 
 import com.phantomwing.rusticpancakes.RusticPancakes;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Every provider, client and server alike: the {@code clientData} run fires {@link GatherDataEvent.Client}, whose
+ * environment is a full client, so the server data generates beside the models.
+ */
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = RusticPancakes.MOD_ID)
 public class DataGenerators {
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+    public static void gatherData(GatherDataEvent.Client event) {
+        PackOutput output = event.getGenerator().getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new ModRecipeProvider.Runner(output, lookupProvider));
-        generator.addProvider(event.includeServer(), ModLootTableProvider.create(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new AdvancementProvider(output, lookupProvider, List.of(new ModAdvancements())));
+        event.addProvider(new ModRecipeProvider.Runner(output, lookupProvider));
+        event.addProvider(ModLootTableProvider.create(output, lookupProvider));
+        event.addProvider(new AdvancementProvider(output, lookupProvider, List.of(new ModAdvancements())));
 
-        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ModItemModelProvider(output, existingFileHelper));
+        event.addProvider(new ModModelProvider(output));
 
-        ModBlockTagsProvider blockTagsProvider = generator.addProvider(event.includeServer(), new ModBlockTagsProvider(output, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
+        ModBlockTagsProvider blockTagsProvider = event.addProvider(new ModBlockTagsProvider(output, lookupProvider));
+        event.addProvider(new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter()));
     }
 }
