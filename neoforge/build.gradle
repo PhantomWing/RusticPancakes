@@ -16,15 +16,6 @@ def runningGameTest = gradle.startParameter.taskNames.any { it.toLowerCase().con
 def runningDataGen = gradle.startParameter.taskNames.any { it.toLowerCase().contains('data') }
 
 loom {
-    // The game tests join the dev mod through Loom's own `main` group. A second group for the same mod
-    // hands the loader two copies, and some FML releases keep the one without the tests (none run).
-    // Dev-runtime only: the shipped jar is still built from `main`.
-    mods {
-        named('main') {
-            sourceSet sourceSets.test
-        }
-    }
-
     runs {
         // Datagen output is shared by both loaders, so it goes to common.
         //   ./gradlew :neoforge:runData
@@ -47,6 +38,14 @@ loom {
             name = "Game Test"
             runDir "run/gametest"
             source sourceSets.test
+            // The test classes join the mod in this run only: NeoForge 21.5 fires RegisterGameTestsEvent again as a dev
+            // dedicated server starts, into registries already frozen, and runServer crashed with them on its classpath.
+            mods {
+                "${datagenModId}" {
+                    sourceSet sourceSets.main
+                    sourceSet sourceSets.test
+                }
+            }
         }
     }
 }
