@@ -2,7 +2,6 @@ package com.phantomwing.rusticpancakes.item.custom;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 import com.google.common.collect.Lists;
@@ -23,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
 public class ConsumableItem extends Item {
@@ -39,11 +39,12 @@ public class ConsumableItem extends Item {
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
     }
 
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
-            if (this.hasFoodEffectTooltip) {
-                Objects.requireNonNull(tooltip);
-                this.addFoodEffectTooltip(stack, tooltip::add, 1.0F, context.tickRate());
-            }
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag isAdvanced) {
+        // From 1.21.5 the game always calls this, and leaves it to the item to honour a hidden component.
+        if (this.hasFoodEffectTooltip && display.shows(DataComponents.CONSUMABLE)) {
+            this.addFoodEffectTooltip(stack, tooltip, 1.0F, context.tickRate());
+        }
     }
 
     public void addFoodEffectTooltip(ItemStack stack, Consumer<Component> tooltipAdder, float durationFactor, float tickRate) {

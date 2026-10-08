@@ -73,7 +73,7 @@ allprojects {
             url = "https://maven.ryanliptak.com/"
         }
 
-        // JEI (dev-runtime only, NeoForge)
+        // JEI (dev-runtime only)
         maven {
             name = "Jared's maven"
             url = "https://maven.blamejared.com/"

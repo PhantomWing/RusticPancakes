@@ -8,10 +8,9 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -55,19 +54,18 @@ public class ModModelProvider extends ModelProvider {
     /** The hand-made stack models are named for the pancakes they show, so the packed servings value maps straight onto them. */
     private void pancakeBlock(BlockModelGenerators blockModels, Block block) {
         String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
-        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block)
-                .with(PropertyDispatch.properties(PancakeBlock.FACING, PancakeBlock.SERVINGS)
-                        .generate((facing, servings) -> rotated(Variant.variant()
-                                .with(VariantProperties.MODEL, RusticPancakes.resourceLocation(
-                                        "block/" + name + "_stack_" + PancakeBlock.pancakesPresentFor(servings))), facing))));
+        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
+                .with(PropertyDispatch.initial(PancakeBlock.FACING, PancakeBlock.SERVINGS)
+                        .generate((facing, servings) -> rotated(BlockModelGenerators.plainVariant(RusticPancakes.resourceLocation(
+                                "block/" + name + "_stack_" + PancakeBlock.pancakesPresentFor(servings))), facing))));
     }
 
     /** Facing north needs no rotation, and says none. */
-    private static Variant rotated(Variant variant, Direction facing) {
+    private static MultiVariant rotated(MultiVariant variant, Direction facing) {
         return switch (((int) facing.toYRot() + DEFAULT_ANGLE_OFFSET) % 360) {
-            case 90 -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90);
-            case 180 -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180);
-            case 270 -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270);
+            case 90 -> variant.with(BlockModelGenerators.Y_ROT_90);
+            case 180 -> variant.with(BlockModelGenerators.Y_ROT_180);
+            case 270 -> variant.with(BlockModelGenerators.Y_ROT_270);
             default -> variant;
         };
     }

@@ -1,27 +1,46 @@
 package com.phantomwing.rusticpancakes.neoforge.gametest;
 
 import com.phantomwing.rusticpancakes.RusticPancakes;
-import net.minecraft.gametest.framework.GameTestGenerator;
-import net.minecraft.gametest.framework.TestFunction;
-import net.neoforged.neoforge.gametest.GameTestHolder;
-
-import java.util.List;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.gametest.framework.FunctionGameTestInstance;
+import net.minecraft.gametest.framework.TestData;
+import net.minecraft.gametest.framework.TestEnvironmentDefinition;
+import net.minecraft.resources.ResourceKey;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 /**
- * Registers {@link GameTests} the way versions before 1.21.5 do: as one generator, which NeoForge finds
- * through the holder annotation. From 1.21.5 this class registers into the test registries instead.
- * Nothing here changes when a test is added.
+ * Registers {@link GameTests} the way 1.21.5 on does: each body into the static {@code test_function}
+ * registry, and each test into {@code test_instance} with the structure and time limit its entry gives.
+ * Before 1.21.5 this class is a {@code @GameTestGenerator} instead. Nothing here changes when a test is
+ * added.
  */
-@GameTestHolder(RusticPancakes.MOD_ID)
+@EventBusSubscriber(modid = RusticPancakes.MOD_ID)
 public final class GameTestRegistration {
     private GameTestRegistration() {
     }
 
-    @GameTestGenerator
-    public static List<TestFunction> generate() {
-        return GameTests.ALL.stream()
-                .map(test -> new TestFunction("defaultBatch", test.name(),
-                        RusticPancakes.MOD_ID + ":" + test.structure(), test.maxTicks(), 0, true, test.body()))
-                .toList();
+    @SubscribeEvent
+    public static void registerFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, helper -> GameTests.ALL.forEach(
+                test -> helper.register(RusticPancakes.resourceLocation(test.name()), test.body())));
+    }
+
+    /**
+     * The instances, in code rather than as {@code test_instance} JSONs, so no test can be listed without
+     * one and silently never run. Only the instances: {@code test_function} is a static registry and is
+     * already frozen when this fires ("Registry is already frozen").
+     */
+    @SubscribeEvent
+    public static void registerTests(RegisterGameTestsEvent event) {
+        Holder<TestEnvironmentDefinition> environment = event.registerEnvironment(RusticPancakes.resourceLocation("default"));
+        for (GameTests.Test test : GameTests.ALL) {
+            event.registerTest(RusticPancakes.resourceLocation(test.name()), new FunctionGameTestInstance(
+                    ResourceKey.create(Registries.TEST_FUNCTION, RusticPancakes.resourceLocation(test.name())),
+                    new TestData<>(environment, RusticPancakes.resourceLocation(test.structure()), test.maxTicks(), 0, true)));
+        }
     }
 }

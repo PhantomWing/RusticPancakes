@@ -36,16 +36,17 @@ loom {
             programArgs('--mod', datagenModId, '--all', '--output', datagenOutput, '--existing', datagenExisting)
         }
 
-        // Runs every game test in the mod's namespace headless, prints PASS/FAIL, and exits.
+        // Runs every registered test headless - the mod's and vanilla's always_pass - prints PASS/FAIL, and exits.
         //   ./gradlew :neoforge:runGameTest
+        // From NeoForge 21.5 the game-test properties do nothing and server() just idles as a dedicated server: the
+        // gameTestServer template both enables and runs the tests. The environment picks launch.cfg's section, so it
+        // has to name the same template.
         gameTest {
-            server()
+            environment('gameTestServer')
+            forgeTemplate('gameTestServer')
             name = "Game Test"
             runDir "run/gametest"
             source sourceSets.test
-            property 'neoforge.enableGameTest', 'true'
-            property 'neoforge.gameTestServer', 'true'
-            property 'neoforge.enabledGameTestNamespaces', datagenModId
         }
     }
 }
@@ -77,7 +78,7 @@ dependencies {
     // game-test and datagen runs, where they only add load time and ways to fail.
     if (!runningGameTest && !runningDataGen) {
         modLocalRuntime("squeek.appleskin:appleskin-neoforge:${rootProject.appleskin_neoforge_version}")
-        modLocalRuntime("mezz.jei:jei-1.21.4-neoforge:${rootProject.jei_neoforge_version}")
+        modLocalRuntime("mezz.jei:jei-1.21.5-neoforge:${rootProject.jei_version}")
     }
 }
 

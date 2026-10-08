@@ -17,21 +17,21 @@ public class ConsumableValues {
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F))
             .build();
     public static final Consumable SYRUP = Consumables.defaultDrink()
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0, false, false), 1.0F))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 300, 0, false, false), 1.0F))
             .build();
 
     // Pancakes
     public static final Consumable HONEY_PANCAKE = Consumables.defaultFood()
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0, false, false), 1.0F))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 900, 0, false, false), 1.0F))
             .build();
     public static final Consumable CHOCOLATE_PANCAKE = Consumables.defaultFood()
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0, false, false), 1.0F))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 900, 0, false, false), 1.0F))
             .build();
     public static final Consumable CHERRY_BLOSSOM_PANCAKE = Consumables.defaultFood()
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F))
             .build();
     public static final Consumable VEGETABLE_PANCAKE = Consumables.defaultFood()
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0, false, false), 1.0F))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HASTE, 600, 0, false, false), 1.0F))
             .build();
     public static final Consumable PUMPKIN_PANCAKE = Consumables.defaultFood()
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 0, false, false), 1.0F))
