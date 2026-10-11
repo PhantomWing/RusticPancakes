@@ -56,6 +56,9 @@ minecraft {
 
         gameTestServer {
             workingDirectory project.file('run')
+            // ForgeGradle calls System.exit in Gradle's own JVM once the game ends, which took the daemon down with
+            // it: the build failed with "daemon disappeared" even when every test passed, and lost the exit code.
+            forceExit false
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
