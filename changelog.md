@@ -2,6 +2,7 @@
 
 ### Fixes
 - Comparators beside a placed stack now read how many pancakes are left on it; a full plate used to read 0
+- Taking a pancake from a placed plate now updates it for every player nearby; others used to see its old height until the chunk reloaded
 
 
 # 1.1.0

@@ -134,7 +134,7 @@ public class PancakeBlock extends Block {
     private void removeServing(Level level, BlockPos pos, BlockState state) {
         int servingsTaken = state.getValue(SERVINGS);
         if (servingsTaken < MAX_SERVINGS - 1) {
-            level.setBlock(pos, state.setValue(SERVINGS, servingsTaken + 1), MAX_SERVINGS - 1);
+            level.setBlock(pos, state.setValue(SERVINGS, servingsTaken + 1), Block.UPDATE_ALL);
         } else {
             level.destroyBlock(pos, true);
         }
