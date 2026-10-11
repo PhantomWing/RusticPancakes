@@ -12,6 +12,7 @@
 - You no longer need shears to get a single pancake: right-clicking a placed stack now puts a pancake straight into your inventory, instead of eating it
 - Breaking a placed stack now drops the pancakes that are left on it, along with the bowl
 - Improved the Cherry Blossom Pancakes textures
+- Updated the Batter texture
 - Pancake stacks now show the italicized "Placeable" tooltip
 
 ### Fixes
