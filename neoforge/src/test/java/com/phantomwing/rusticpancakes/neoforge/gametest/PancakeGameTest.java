@@ -25,6 +25,7 @@ import java.util.function.Consumer;
 
 import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.entitiesLoadedAroundSpawn;
 import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.fail;
+import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.mockServerPlayer;
 
 /**
  * Game tests for taking pancakes off a placed stack and putting them back ({@link PancakeBlock}), and
@@ -218,7 +219,7 @@ public final class PancakeGameTest {
     /** Runs {@code body} with a survival mock player, once the entities around spawn have loaded. */
     private static void withPlayer(GameTestHelper helper, Consumer<ServerPlayer> body) {
         whenSpawnLoaded(helper, SPAWN_TICKS, () -> {
-            ServerPlayer player = helper.makeMockServerPlayerInLevel();
+            ServerPlayer player = mockServerPlayer(helper);
             player.setGameMode(GameType.SURVIVAL);
             body.accept(player);
         });
