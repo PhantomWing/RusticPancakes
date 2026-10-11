@@ -92,7 +92,8 @@ minecraft {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+// Datagen's hash cache is for datagen, not the jar.
+sourceSets.main.resources { srcDir 'src/generated/resources'; exclude '.cache' }
 
 repositories {
     // AppleSkin
