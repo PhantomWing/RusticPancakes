@@ -166,6 +166,19 @@ public final class PancakeGameTest {
         helper.succeed();
     }
 
+    /** A comparator reads the pancakes left on a stack, whatever height it is stored at. */
+    public static void aComparatorReadsThePancakesLeft(GameTestHelper helper) {
+        BlockPos pos = helper.absolutePos(STACK);
+        for (int pancakes = 1; pancakes <= PancakeBlock.MAX_TOTAL_SERVINGS; pancakes++) {
+            int signal = stackOf(ModBlocks.PANCAKES.get(), pancakes).getAnalogOutputSignal(helper.getLevel(), pos);
+            if (signal != pancakes) {
+                fail(helper, "a comparator should read " + pancakes + " from a stack of " + pancakes + ", reads " + signal);
+                return;
+            }
+        }
+        helper.succeed();
+    }
+
     /** Eating Batter leaves its bowl and drinking Syrup its bottle, as vanilla's stews and potions do. */
     public static void eatingLeavesTheBowlOrBottle(GameTestHelper helper) {
         withPlayer(helper, player -> {

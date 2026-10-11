@@ -21,6 +21,7 @@
 - Fixed the topping floating above a full stack of Chocolate or Vegetable Pancakes
 - Fixed a malformed Japanese translation file, and the creative tab being called Rustic Delight in Japanese
 - Eating Batter now gives its bowl back, as drinking Syrup gives back its bottle
+- Comparators beside a placed stack now read how many pancakes are left on it; a full plate used to read 0
 
 
 # 1.1.0
