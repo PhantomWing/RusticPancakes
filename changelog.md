@@ -1,6 +1,23 @@
-# 1.1.1
+# 1.2.0
+
+### Additions
+- Pancakes can be put back onto a placed stack by sneaking and right-clicking with a matching pancake, up to 12 high
+- Added particles when taking a pancake from a placed stack
+- Added advancements: Batter Up!, A Taste of Sweetness and Fresh Off the Griddle
+- Added compatibility with Hearth and Harvest: its Syrup Bottle can be used in place of Syrup
+- Added Spanish (Argentina), Spanish (Chile), Kazakh, Korean, Russian and Ukrainian translations, carried over from Rustic Delight (thank you ex0planet, vlaster666, ninsent, TAILS, MaxKuz67, JedaiGames and hikarosato!)
+- Added translations for the mod's item and block tags, which recipe viewers such as JEI show
+
+### Changes
+- You no longer need shears to get a single pancake: right-clicking a placed stack now puts a pancake straight into your inventory, instead of eating it
+- Breaking a placed stack now drops the pancakes that are left on it, along with the bowl
+- Improved the Cherry Blossom Pancakes textures
+- Pancake stacks now show the italicized "Placeable" tooltip
 
 ### Fixes
+- Fixed the topping floating above a full stack of Chocolate or Vegetable Pancakes
+- Fixed a malformed Japanese translation file, and the creative tab being called Rustic Delight in Japanese
+- Eating Batter now gives its bowl back, as drinking Syrup gives back its bottle
 - Comparators beside a placed stack now read how many pancakes are left on it; a full plate used to read 0
 - Taking a pancake from a placed plate now updates it for every player nearby; others used to see its old height until the chunk reloaded
 

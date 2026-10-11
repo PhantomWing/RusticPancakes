@@ -1,0 +1,36 @@
+{
+  "parent": "rusticpancakes:main/batter",
+  "criteria": {
+    "syrup": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "rusticpancakes:syrup"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.rusticpancakes.syrup.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "rusticpancakes:syrup"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.rusticpancakes.syrup.title"
+    }
+  },
+  "requirements": [
+    [
+      "syrup"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

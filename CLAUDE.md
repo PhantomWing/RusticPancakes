@@ -19,6 +19,9 @@ A rustic mod for baking different kinds of pancakes and placing them in the worl
 
 - Java 17, Mojang mappings with Parchment.
 - Datagen: `runData`. Output: `src/generated/resources`, never hand-edited.
-- Game tests in `src/gametest`, a source set of their own so neither the tests nor their `empty` structure ship, run with `runGameTestServer`: `PancakeGameTest`, a `@GameTestHolder` class. Add the next one for whatever is ported next.
+- Game tests in `src/gametest`, a source set of their own so neither the tests nor their `empty` structure ship, run with `runGameTestServer`, laid out as on the 1.21 lines: a body in `PancakeGameTest`, an entry in `GameTests`, `GameTestRegistration` as the `@GameTestHolder` generator, and whatever differs between versions in `TestCompat`. The tests' player is a `FakePlayer` (`TestCompat.mockServerPlayer`): Forge 1.20.1's player list needs a network channel `makeMockServerPlayerInLevel`'s player hasn't got.
+- A stack's `servings` is packed so worlds from before 1.2 keep their stacks (`PancakeBlock`): never renumber it. Block states pick a `_stack_<n>` model by the pancakes shown.
+- Sneaking with a matching pancake puts it back on a stack: `ModEvents` sets the right-click event's use-block result to ALLOW, which vanilla otherwise skips while sneaking with a full hand.
+- Item tags use Forge's `forge:` namespace, where the 1.21 lines use `c:`.
 - Gradle 8.9, which the Mod Publish Plugin 2.0.0 needs; ForgeGradle 6 runs on it unchanged.
 - Published with `publishMods` from `build.gradle`, with the `-PpublishDryRun` flag, to Modrinth and CurseForge as both Forge and NeoForge (NeoForge's 1.20.1 is Forge 47.1 forked and runs this jar, and the hand uploads said both), tagged `1.20.1` (`supported_minecraft_versions`).

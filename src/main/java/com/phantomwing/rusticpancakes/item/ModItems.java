@@ -6,7 +6,7 @@ import com.phantomwing.rusticpancakes.block.ModBlocks;
 import com.phantomwing.rusticpancakes.food.FoodValues;
 import com.phantomwing.rusticpancakes.item.custom.ConsumableItem;
 import com.phantomwing.rusticpancakes.item.custom.DrinkableItem;
-import net.minecraft.world.item.BlockItem;
+import com.phantomwing.rusticpancakes.item.custom.PlaceableItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -29,7 +29,8 @@ public class ModItems {
     // Cooking products
     public static final RegistryObject<Item> SYRUP = registerWithTab("syrup", () -> new DrinkableItem(
             bottleItem().food(FoodValues.SYRUP), true));
-    public static final RegistryObject<Item> BATTER = registerWithTab("batter", () -> new Item(
+    // A ConsumableItem, so eating one gives its bowl back: into the hand for the last one, else the inventory.
+    public static final RegistryObject<Item> BATTER = registerWithTab("batter", () -> new ConsumableItem(
             bowlItem().food(FoodValues.BATTER)));
 
     // Pancakes
@@ -73,7 +74,7 @@ public class ModItems {
     }
 
     public static RegistryObject<Item> registerBlockWithTab(RegistryObject<Block> block, Item.Properties properties) {
-        return registerWithTab(block.getId().getPath().replaceFirst(RusticPancakes.MOD_ID + ":", ""), () -> new BlockItem(block.get(), properties));
+        return registerWithTab(block.getId().getPath().replaceFirst(RusticPancakes.MOD_ID + ":", ""), () -> new PlaceableItem(block.get(), properties));
     }
 
     public static void register(IEventBus eventBus) {
