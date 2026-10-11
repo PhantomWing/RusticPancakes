@@ -1,0 +1,9 @@
+{
+  "values": [
+    "rusticpancakes:syrup",
+    {
+      "id": "hearthandharvest:syrup_bottle",
+      "required": false
+    }
+  ]
+}

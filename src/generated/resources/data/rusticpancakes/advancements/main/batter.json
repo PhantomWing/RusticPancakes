@@ -1,0 +1,38 @@
+{
+  "parent": "rusticpancakes:main/root",
+  "criteria": {
+    "batter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rusticpancakes:batter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.rusticpancakes.batter.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "rusticpancakes:batter"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.rusticpancakes.batter.title"
+    }
+  },
+  "requirements": [
+    [
+      "batter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
