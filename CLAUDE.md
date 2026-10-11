@@ -21,5 +21,5 @@ A rustic mod for baking different kinds of pancakes and placing them in the worl
 
 - Java 17, Mojang mappings, no Parchment.
 - Datagen: `runData`. Output: `src/generated/resources`, never hand-edited.
-- No game tests yet. Writing the first one for whatever is ported next is the highest-value test available (`verification.md`).
+- Game tests in `src/gametest`, a source set of their own so neither the tests nor their `empty` structure ship, run with `runGameTestServer`: `PancakeGameTest`, a `@GameTestHolder` class. Add the next one for whatever is ported next. The run prints vanilla's summary and then fails with "Gradle build daemon disappeared unexpectedly" as the test server shuts down, with or without tests (Forge 43.1.0, ForgeGradle 5.1, Gradle 7.4.2): read the summary, not the build's result.
 - No `publishMods` on this line: add the block before publishing it through the plugin (`publishing.md`).
