@@ -175,9 +175,10 @@ public class PancakeBlock extends Block {
         builder.add(FACING, SERVINGS);
     }
 
+    /** The pancakes left, 1 to 6: {@link #SERVINGS} counts the ones taken. */
     @Override
     public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
-        return blockState.getValue(SERVINGS);
+        return MAX_SERVINGS - blockState.getValue(SERVINGS);
     }
 
     @Override

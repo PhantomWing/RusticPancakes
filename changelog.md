@@ -1,3 +1,9 @@
+# 1.1.1
+
+### Fixes
+- Comparators beside a placed stack now read how many pancakes are left on it; a full plate used to read 0
+
+
 # 1.1.0
 
 ### Additions
