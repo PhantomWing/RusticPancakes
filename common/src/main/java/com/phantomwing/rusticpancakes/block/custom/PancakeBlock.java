@@ -201,9 +201,10 @@ public class PancakeBlock extends Block {
         builder.add(FACING, SERVINGS);
     }
 
+    /** The pancakes left, 1 to 12, since {@link #SERVINGS} is packed and counts down on a plate. */
     @Override
     public int getAnalogOutputSignal(BlockState blockState, @NotNull Level level, @NotNull BlockPos pos) {
-        return blockState.getValue(SERVINGS);
+        return getPancakesPresent(blockState);
     }
 
     @Override
