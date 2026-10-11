@@ -3,6 +3,7 @@ package com.phantomwing.rusticpancakes.neoforge.gametest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.ChunkPos;
 
 /**
@@ -17,6 +18,11 @@ public final class TestCompat {
     /** Fails the test. {@code GameTestHelper.fail} takes only a Component from 1.21.5 to 1.21.8. */
     public static void fail(GameTestHelper helper, String message) {
         helper.fail(Component.literal(message));
+    }
+
+    /** A server player for the test to act as. Forge 1.19.2 and 1.20.1 need a FakePlayer here instead. */
+    public static ServerPlayer mockServerPlayer(GameTestHelper helper) {
+        return helper.makeMockServerPlayerInLevel();
     }
 
     /**
