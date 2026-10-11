@@ -13,13 +13,12 @@ which describes another line; for this folder, this file is the one that applies
 A rustic mod for baking different kinds of pancakes and placing them in the world. Mod ID
 `rusticpancakes`. Spun out of Rustic Delight.
 
-**Dormant** - no commits since 2025-02. Released since 2024-11, uploaded by hand: no line has
-`publishMods` or platform IDs in `gradle.properties`. The Modrinth and CurseForge IDs are in
-`mods.json`; add the block and copy them before publishing a line through the plugin.
+**Maintenance only.** 1.0.0 and 1.1.0 were uploaded by hand; from 1.1.1 the line publishes through the plugin.
 
 ## This line
 
 - Java 17, Mojang mappings with Parchment.
 - Datagen: `runData`. Output: `src/generated/resources`, never hand-edited.
 - Game tests in `src/gametest`, a source set of their own so neither the tests nor their `empty` structure ship, run with `runGameTestServer`: `PancakeGameTest`, a `@GameTestHolder` class. Add the next one for whatever is ported next.
-- No `publishMods` on this line: add the block before publishing it through the plugin (`publishing.md`).
+- Gradle 8.9, which the Mod Publish Plugin 2.0.0 needs; ForgeGradle 6 runs on it unchanged.
+- Published with `publishMods` from `build.gradle`, with the `-PpublishDryRun` flag, to Modrinth and CurseForge as both Forge and NeoForge (NeoForge's 1.20.1 is Forge 47.1 forked and runs this jar, and the hand uploads said both), tagged `1.20.1` (`supported_minecraft_versions`).
