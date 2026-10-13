@@ -5,7 +5,6 @@
 - Pancakes can be put back onto a placed stack by sneaking and right-clicking with a matching pancake, up to 12 high
 - Added particles when taking a pancake from a placed stack
 - Added advancements: Batter Up!, A Taste of Sweetness and Fresh Off the Griddle
-- Added compatibility with Hearth and Harvest: its Syrup Bottle can be used in place of Syrup
 - Added Spanish (Argentina), Spanish (Chile), Kazakh, Korean, Russian and Ukrainian translations, carried over from Rustic Delight (thank you ex0planet, vlaster666, ninsent, TAILS, MaxKuz67, JedaiGames and hikarosato!)
 - Added translations for the mod's item and block tags, which recipe viewers such as JEI show
 - Ported to Minecraft 1.21.5
