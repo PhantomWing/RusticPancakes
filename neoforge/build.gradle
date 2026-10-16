@@ -74,10 +74,9 @@ dependencies {
     shadowCommon(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive false }
 
     // Dev-runtime niceties: never compiled against, never shipped, never a dependency. Left out of the
-    // game-test and datagen runs, where they only add load time and ways to fail.
+    // game-test and datagen runs, where they only add load time and ways to fail. JEI has no 1.21.6 build.
     if (!runningGameTest && !runningDataGen) {
         modLocalRuntime("squeek.appleskin:appleskin-neoforge:${rootProject.appleskin_neoforge_version}")
-        modLocalRuntime("mezz.jei:jei-1.21.5-neoforge:${rootProject.jei_version}")
     }
 }
 

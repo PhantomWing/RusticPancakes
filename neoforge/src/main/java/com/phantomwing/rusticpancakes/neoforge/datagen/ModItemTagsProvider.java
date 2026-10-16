@@ -7,17 +7,17 @@ import com.phantomwing.rusticpancakes.tags.CompatibilityTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
-    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags) {
-        super(output, lookupProvider, blockTags, RusticPancakes.MOD_ID);
+    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, RusticPancakes.MOD_ID);
     }
 
     @Override
@@ -41,8 +41,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         this.tag(ModTags.Items.SYRUP).add(
                 ModItems.SYRUP.get()
         // Hearth and Harvest's syrup bottle works anywhere our syrup does.
-        ).addOptional(ResourceLocation.fromNamespaceAndPath(CompatibilityTags.HEARTH_AND_HARVEST, "syrup_bottle"));
+        ).add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath(CompatibilityTags.HEARTH_AND_HARVEST, "syrup_bottle")));
 
-        copy(ModTags.Blocks.PANCAKES, ModTags.Items.PANCAKES);
+        // The pancakes block tag's items. 1.21.6 dropped copy(), and with it the block tags this provider read.
+        ModBlockTagsProvider.PANCAKES.forEach(block -> this.tag(ModTags.Items.PANCAKES).add(block.get().asItem()));
     }
 }

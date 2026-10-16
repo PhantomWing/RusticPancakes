@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
  * Every provider, client and server alike: the {@code clientData} run fires {@link GatherDataEvent.Client}, whose
  * environment is a full client, so the server data generates beside the models.
  */
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = RusticPancakes.MOD_ID)
+@EventBusSubscriber(modid = RusticPancakes.MOD_ID)
 public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
@@ -27,7 +27,7 @@ public class DataGenerators {
 
         event.addProvider(new ModModelProvider(output));
 
-        ModBlockTagsProvider blockTagsProvider = event.addProvider(new ModBlockTagsProvider(output, lookupProvider));
-        event.addProvider(new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter()));
+        event.addProvider(new ModBlockTagsProvider(output, lookupProvider));
+        event.addProvider(new ModItemTagsProvider(output, lookupProvider));
     }
 }
