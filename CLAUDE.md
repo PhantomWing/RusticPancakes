@@ -1,8 +1,8 @@
 @~/Documents/Projects/Minecraft/MinecraftDeveloperPortal/.claude/profiles/architectury.md
 
-# Rustic Pancakes - `version/1.21.8`
+# Rustic Pancakes - `version/1.21.10`
 
-**This file describes the `version/1.21.8` line**: Minecraft 1.21.8, which also runs on 1.21.7, Fabric and NeoForge.
+**This file describes the `version/1.21.10` line**: Minecraft 1.21.10, which also runs on 1.21.9, Fabric and NeoForge.
 Built with Architectury Loom (`dev.architectury.loom`) with Mojang mappings layered with Parchment; `remapJar` is the shipped jar.
 
 It belongs to whichever folder has this branch checked out - the main `RusticPancakes` folder or a worktree
@@ -13,7 +13,7 @@ which describes another line; for this folder, this file is the one that applies
 A rustic mod for baking different kinds of pancakes and placing them in the world. Mod ID
 `rusticpancakes`. Spun out of Rustic Delight, whose pancakes it follows.
 
-This line was migrated from `version/1.21.6` at 1.2.0. New features start on the 1.21.1 baseline, `version/1.21`, and are
+This line was migrated from `version/1.21.8` at 1.2.0. New features start on the 1.21.1 baseline, `version/1.21`, and are
 ported here.
 
 ## This line
@@ -23,8 +23,8 @@ ported here.
 - Common code compiles against vanilla, so NeoForge's extensions (`ItemStack#getFoodProperties`, `ItemTags.create`) are not available there.
 - Eating is split in two: hunger and saturation in `FoodValues`, and the animation, time and effects in `ConsumableValues` (1.21.2's `Consumable`). Syrup and Batter leave their bottle and bowl through `usingConvertsTo`; there is no drinkable item class.
 - Datagen: `:neoforge:runData`, NeoForge's `clientData` run, which fires `GatherDataEvent.Client` and generates the server data too. Block states and item models come from vanilla's `ModelProvider` (`ModModelProvider`), which writes the `items/` client item definitions as well. Output: `common/src/generated/resources`, never hand-edited, and shipped to both loaders, so a recipe may only use ingredients both read: no `neoforge:difference`, and no `c:` tag Fabric API doesn't ship unless the mod's tags define it, since a recipe naming a missing tag doesn't load. `ModItemTagsProvider` is NeoForge's own from 1.21.6, which reads no block tags, so the `pancakes` item tag lists the block items itself rather than copying the block tag. It defines `c:eggs`, which Fabric API lacked before 1.21.4; from then the two merge. The run finishes its providers in a second and then doesn't exit; stop it once the log says `Caching: total files`.
-- Game tests in `neoforge/src/test`, run with `:neoforge:runGameTest` through NeoForge's `gameTestServer` run template, laid out as The Lead Age's are: a body in `PancakeGameTest`, an entry in `GameTests`, and whatever differs between versions in `TestCompat`. `GameTestRegistration` registers them in code - the bodies as test functions in `RegisterEvent`, the tests in `RegisterGameTestsEvent` - so there are no `test_instance` JSONs to keep. They click through `ServerPlayerGameMode#useItemOn`, so the sneak-to-add handler runs; the Fabric side of that handler has no test.
+- Game tests in `neoforge/src/test`, run with `:neoforge:runGameTest` through NeoForge's `gameTestServer` run template, laid out as The Lead Age's are: a body in `PancakeGameTest`, an entry in `GameTests`, and whatever differs between versions in `TestCompat`. `GameTestRegistration` registers them in code - the bodies as test functions in `RegisterEvent`, the tests in `RegisterGameTestsEvent` - so there are no `test_instance` JSONs to keep. They click through `ServerPlayerGameMode#useItemOn`, so the sneak-to-add handler runs; the Fabric side of that handler has no test. From 1.21.9 a mock player waits for nothing around the spawn, so `TestCompat.entitiesLoadedAroundSpawn` is always true here.
 - A stack's `servings` is packed so worlds from before 1.2 keep their stacks (`PancakeBlock`): never renumber it.
-- Dev runs carry JEI and AppleSkin, with Cloth Config on Fabric for AppleSkin's settings: AppleSkin's and Cloth Config's 1.21.6 builds cover 1.21.7 and 1.21.8.
-- Published with `publishMods` from `fabric/build.gradle` and `neoforge/build.gradle`, with the `-PpublishDryRun` flag. Uploads are tagged `1.21.7` and `1.21.8` (`supported_minecraft_versions`), the whole of the rung. The jar is built against 1.21.8 and asks for no more than 1.21.7 has: NeoForge from 21.7 (`neo_version_range`), and Fabric API from 0.129.0 (`fabric_api_min_version`), 1.21.7's newest; `fabric_api_version` is only what it compiles against.
+- Dev runs carry JEI and AppleSkin, with Cloth Config on Fabric for AppleSkin's settings: AppleSkin's 1.21.9 builds cover 1.21.10.
+- Published with `publishMods` from `fabric/build.gradle` and `neoforge/build.gradle`, with the `-PpublishDryRun` flag. Uploads are tagged `1.21.9` and `1.21.10` (`supported_minecraft_versions`), the whole of the rung. The jar is built against 1.21.10 and asks for no more than 1.21.9 has: NeoForge from 21.9 (`neo_version_range`), Fabric API from 0.134.1 (`fabric_api_min_version`) and Architectury API from 18.0.5 (`architectury_min_version`), the newest of each for 1.21.9; `fabric_api_version` and `architectury_version` are only what it compiles against.
 - GitHub Actions: `build.yml`.

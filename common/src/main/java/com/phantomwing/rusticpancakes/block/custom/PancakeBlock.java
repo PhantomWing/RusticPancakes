@@ -203,7 +203,7 @@ public class PancakeBlock extends Block {
 
     /** The pancakes left, 1 to 12, since {@link #SERVINGS} is packed and counts down on a plate. */
     @Override
-    public int getAnalogOutputSignal(BlockState blockState, @NotNull Level level, @NotNull BlockPos pos) {
+    protected int getAnalogOutputSignal(BlockState blockState, @NotNull Level level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return getPancakesPresent(blockState);
     }
 
