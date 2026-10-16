@@ -23,6 +23,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.analogSignal;
 import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.entitiesLoadedAroundSpawn;
 import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.fail;
 import static com.phantomwing.rusticpancakes.neoforge.gametest.TestCompat.mockServerPlayer;
@@ -171,7 +172,7 @@ public final class PancakeGameTest {
     public static void aComparatorReadsThePancakesLeft(GameTestHelper helper) {
         BlockPos pos = helper.absolutePos(STACK);
         for (int pancakes = 1; pancakes <= PancakeBlock.MAX_TOTAL_SERVINGS; pancakes++) {
-            int signal = stackOf(ModBlocks.PANCAKES.get(), pancakes).getAnalogOutputSignal(helper.getLevel(), pos);
+            int signal = analogSignal(stackOf(ModBlocks.PANCAKES.get(), pancakes), helper.getLevel(), pos);
             if (signal != pancakes) {
                 fail(helper, "a comparator should read " + pancakes + " from a stack of " + pancakes + ", reads " + signal);
                 return;
