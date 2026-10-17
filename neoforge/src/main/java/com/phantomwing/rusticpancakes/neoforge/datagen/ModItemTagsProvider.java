@@ -7,7 +7,7 @@ import com.phantomwing.rusticpancakes.tags.CompatibilityTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagEntry;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
@@ -41,7 +41,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         this.tag(ModTags.Items.SYRUP).add(
                 ModItems.SYRUP.get()
         // Hearth and Harvest's syrup bottle works anywhere our syrup does.
-        ).add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath(CompatibilityTags.HEARTH_AND_HARVEST, "syrup_bottle")));
+        ).add(TagEntry.optionalElement(Identifier.fromNamespaceAndPath(CompatibilityTags.HEARTH_AND_HARVEST, "syrup_bottle")));
 
         // The pancakes block tag's items. 1.21.6 dropped copy(), and with it the block tags this provider read.
         ModBlockTagsProvider.PANCAKES.forEach(block -> this.tag(ModTags.Items.PANCAKES).add(block.get().asItem()));

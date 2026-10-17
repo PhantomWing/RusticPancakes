@@ -1,6 +1,6 @@
 package com.phantomwing.rusticpancakes;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 /** Shared constants. The bootstrap is {@link RusticPancakesCommon#init()}, called from each loader's entry point. */
 public final class RusticPancakes {
@@ -9,7 +9,7 @@ public final class RusticPancakes {
     private RusticPancakes() {
     }
 
-    public static ResourceLocation resourceLocation(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier resourceLocation(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

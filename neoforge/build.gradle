@@ -77,7 +77,7 @@ dependencies {
     // game-test and datagen runs, where they only add load time and ways to fail.
     if (!runningGameTest && !runningDataGen) {
         modLocalRuntime("squeek.appleskin:appleskin-neoforge:${rootProject.appleskin_neoforge_version}")
-        modLocalRuntime("mezz.jei:jei-1.21.10-neoforge:${rootProject.jei_version}")
+        modLocalRuntime("mezz.jei:jei-1.21.11-neoforge:${rootProject.jei_version}")
     }
 }
 

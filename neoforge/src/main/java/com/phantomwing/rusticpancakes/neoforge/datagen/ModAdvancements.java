@@ -6,14 +6,14 @@ import com.phantomwing.rusticpancakes.tags.ModTags;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 
@@ -21,8 +21,8 @@ import java.util.function.Consumer;
 
 /** The mod's advancement tab, laid out as Rustic Delight's pancake branch: Batter, then Syrup and Pancakes. */
 public class ModAdvancements implements AdvancementSubProvider {
-    private static final ResourceLocation BACKGROUND =
-            ResourceLocation.withDefaultNamespace("textures/block/dirt_path_top.png");
+    private static final Identifier BACKGROUND =
+            Identifier.withDefaultNamespace("block/dirt_path_top");
 
     @Override
     public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver) {
