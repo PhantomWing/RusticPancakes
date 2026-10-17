@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 /** The mod's advancement tab, laid out as Rustic Delight's pancake branch: Batter, then Syrup and Pancakes. */
 public class ModAdvancements implements AdvancementSubProvider {
     private static final ResourceLocation BACKGROUND =
-            ResourceLocation.withDefaultNamespace("textures/block/dirt_path_top.png");
+            ResourceLocation.withDefaultNamespace("block/dirt_path_top");
 
     @Override
     public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver) {
