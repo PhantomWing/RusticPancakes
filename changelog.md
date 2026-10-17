@@ -1,3 +1,9 @@
+# 1.2.1
+
+### Fixes
+- Fixed the advancement tab's background showing as a missing texture
+
+
 # 1.2.0
 
 ### Additions
