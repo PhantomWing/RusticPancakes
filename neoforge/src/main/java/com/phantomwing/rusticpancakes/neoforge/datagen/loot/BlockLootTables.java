@@ -4,7 +4,7 @@ import com.phantomwing.rusticpancakes.block.ModBlocks;
 import com.phantomwing.rusticpancakes.block.custom.PancakeBlock;
 import com.phantomwing.rusticpancakes.item.ModItems;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;

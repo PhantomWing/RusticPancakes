@@ -143,7 +143,7 @@ publishMods {
     modrinth {
         projectId = providers.gradleProperty("modrinth_project_id")
         accessToken = providers.environmentVariable("MODRINTH_TOKEN").orElse(providers.gradleProperty("modrinth_token"))
-        // NeoForge 26.1.2 is for 26.1.2 alone, so the upload is tagged with what neoforge_minecraft_versions lists.
+        // Tagged with what neoforge_minecraft_versions lists, which leaves out a covered version NeoForge has no build for.
         rootProject.neoforge_minecraft_versions.tokenize(' ,').each { minecraftVersions.add(it) }
         requires("architectury-api")
     }

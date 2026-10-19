@@ -7,7 +7,7 @@
 - Added advancements: Batter Up!, A Taste of Sweetness and Fresh Off the Griddle
 - Added Spanish (Argentina), Spanish (Chile), Kazakh, Korean, Russian and Ukrainian translations, carried over from Rustic Delight (thank you ex0planet, vlaster666, ninsent, TAILS, MaxKuz67, JedaiGames and hikarosato!)
 - Added translations for the mod's item and block tags, which recipe viewers such as JEI show
-- Ported to Minecraft 26.1, 26.1.1 and 26.1.2
+- Ported to Minecraft 26.2
 
 ### Changes
 - Now requires Architectury API

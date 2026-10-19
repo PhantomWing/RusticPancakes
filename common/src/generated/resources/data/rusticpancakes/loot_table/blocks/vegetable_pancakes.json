@@ -7,7 +7,6 @@
   ],
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -26,7 +25,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -41,7 +39,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 5.0,
               "function": "minecraft:set_count"
             }
@@ -52,7 +49,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -67,7 +63,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 4.0,
               "function": "minecraft:set_count"
             }
@@ -78,7 +73,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -93,7 +87,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 3.0,
               "function": "minecraft:set_count"
             }
@@ -104,7 +97,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -119,7 +111,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 2.0,
               "function": "minecraft:set_count"
             }
@@ -130,7 +121,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -145,7 +135,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 1.0,
               "function": "minecraft:set_count"
             }
@@ -156,7 +145,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -171,7 +159,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 7.0,
               "function": "minecraft:set_count"
             }
@@ -182,7 +169,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -197,7 +183,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 8.0,
               "function": "minecraft:set_count"
             }
@@ -208,7 +193,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -223,7 +207,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 9.0,
               "function": "minecraft:set_count"
             }
@@ -234,7 +217,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -249,7 +231,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 10.0,
               "function": "minecraft:set_count"
             }
@@ -260,7 +241,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -275,7 +255,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 11.0,
               "function": "minecraft:set_count"
             }
@@ -286,7 +265,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "block": "rusticpancakes:vegetable_pancakes",
@@ -301,7 +279,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
               "count": 12.0,
               "function": "minecraft:set_count"
             }
@@ -312,7 +289,6 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
           "condition": "minecraft:inverted",

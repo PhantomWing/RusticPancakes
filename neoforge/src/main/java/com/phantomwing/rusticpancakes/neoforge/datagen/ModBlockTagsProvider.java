@@ -29,6 +29,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        PANCAKES.forEach(block -> this.tag(ModTags.Blocks.PANCAKES).add(block.get()));
+        PANCAKES.forEach(block -> this.tag(ModTags.Blocks.PANCAKES).add(block.get().builtInRegistryHolder().key()));
     }
 }

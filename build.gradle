@@ -73,7 +73,11 @@ allprojects {
         maven {
             name = "Jared's maven"
             url = "https://maven.blamejared.com/"
-            content { includeGroup "mezz.jei" }
+            // JEI 30 needs mezz_config, which this maven serves too.
+            content {
+                includeGroup "mezz.jei"
+                includeGroup "net.mezzdev.config"
+            }
         }
 
         // Cloth Config (dev-runtime only: AppleSkin needs it on Fabric). Scoped to its group so this
