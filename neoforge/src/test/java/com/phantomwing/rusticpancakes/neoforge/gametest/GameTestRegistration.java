@@ -36,7 +36,7 @@ public final class GameTestRegistration {
      */
     @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
-        Holder<TestEnvironmentDefinition> environment = event.registerEnvironment(RusticPancakes.resourceLocation("default"));
+        Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(RusticPancakes.resourceLocation("default"));
         for (GameTests.Test test : GameTests.ALL) {
             event.registerTest(RusticPancakes.resourceLocation(test.name()), new FunctionGameTestInstance(
                     ResourceKey.create(Registries.TEST_FUNCTION, RusticPancakes.resourceLocation(test.name())),

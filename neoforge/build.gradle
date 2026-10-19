@@ -1,5 +1,5 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'com.gradleup.shadow' version '9.4.2'
 }
 
 architectury {
@@ -66,18 +66,24 @@ sourceSets {
     }
 }
 
+// The test source set holds game tests, which runGameTest runs; the JUnit `test` task finds none there, and Gradle 9
+// fails a build whose test task discovers nothing.
+tasks.named('test') {
+    failOnNoDiscoveredTests = false
+}
+
 dependencies {
     neoForge "net.neoforged:neoforge:${rootProject.neo_version}"
-    modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
+    api "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
-    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':common')) { transitive false }
     shadowCommon(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive false }
 
     // Dev-runtime niceties: never compiled against, never shipped, never a dependency. Left out of the
     // game-test and datagen runs, where they only add load time and ways to fail.
     if (!runningGameTest && !runningDataGen) {
-        modLocalRuntime("squeek.appleskin:appleskin-neoforge:${rootProject.appleskin_neoforge_version}")
-        modLocalRuntime("mezz.jei:jei-1.21.11-neoforge:${rootProject.jei_version}")
+        localRuntime("squeek.appleskin:appleskin-neoforge:${rootProject.appleskin_neoforge_version}")
+        localRuntime("mezz.jei:jei-${rootProject.minecraft_version}-neoforge:${rootProject.jei_version}")
     }
 }
 
@@ -101,24 +107,31 @@ processResources {
     }
 }
 
+// No remapJar without remapping: the Loom-processed jar is marked raw and Shadow builds on top of it, merging in
+// :common. shadowJar is the shipped jar.
+jar {
+    archiveClassifier = 'raw'
+}
+
 shadowJar {
+    dependsOn jar
+    mainSpec.sourcePaths.clear()
+    from(zipTree(jar.archiveFile))
+
     exclude 'fabric.mod.json'
     exclude 'architectury.common.json'
 
     configurations = [project.configurations.shadowCommon]
-    archiveClassifier = 'dev-shadow'
+    archiveClassifier = null
 }
 
-remapJar {
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-}
+assemble.dependsOn shadowJar
 
 // Publishing (NeoForge jar). ./gradlew :neoforge:publishMods (tokens via MODRINTH_TOKEN / CURSEFORGE_TOKEN env vars).
 apply plugin: 'me.modmuss50.mod-publish-plugin'
 
 publishMods {
-    file = remapJar.archiveFile
+    file = shadowJar.archiveFile
     version = rootProject.mod_version
     displayName = "Rustic Pancakes ${rootProject.mod_version}"
     changelog = rootProject.ext.latestChangelog()
@@ -130,14 +143,14 @@ publishMods {
     modrinth {
         projectId = providers.gradleProperty("modrinth_project_id")
         accessToken = providers.environmentVariable("MODRINTH_TOKEN").orElse(providers.gradleProperty("modrinth_token"))
-        // Tag every supported game version on the upload, not just the build target.
-        rootProject.supported_minecraft_versions.tokenize(' ,').each { minecraftVersions.add(it) }
+        // NeoForge 26.1.2 is for 26.1.2 alone, so the upload is tagged with what neoforge_minecraft_versions lists.
+        rootProject.neoforge_minecraft_versions.tokenize(' ,').each { minecraftVersions.add(it) }
         requires("architectury-api")
     }
     curseforge {
         projectId = providers.gradleProperty("curseforge_project_id")
         accessToken = providers.environmentVariable("CURSEFORGE_TOKEN").orElse(providers.gradleProperty("curseforge_token"))
-        rootProject.supported_minecraft_versions.tokenize(' ,').each { minecraftVersions.add(it) }
+        rootProject.neoforge_minecraft_versions.tokenize(' ,').each { minecraftVersions.add(it) }
         // CurseForge requires explicit side flags (Modrinth infers them from the jar).
         client = true
         server = true
@@ -151,9 +164,15 @@ sourcesJar {
     from commonSources.archiveFile.map { zipTree(it) }
 }
 
-components.java {
-    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
-        skip()
+// Publishing takes the shipped jar rather than the raw one, which lacks :common.
+configurations {
+    apiElements {
+        outgoing.artifacts.clear()
+        outgoing.artifact(shadowJar)
+    }
+    runtimeElements {
+        outgoing.artifacts.clear()
+        outgoing.artifact(shadowJar)
     }
 }
 

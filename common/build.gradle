@@ -19,8 +19,8 @@ processResources {
 
 dependencies {
     // Only for the @Environment annotations and mixin dependencies. Use nothing else from Fabric Loader here.
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modApi "dev.architectury:architectury:${rootProject.architectury_version}"
+    implementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    api "dev.architectury:architectury:${rootProject.architectury_version}"
 }
 
 publishing {
