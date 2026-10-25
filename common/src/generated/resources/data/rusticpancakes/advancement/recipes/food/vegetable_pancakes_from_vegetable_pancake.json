@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:vegetable_pancakes_from_vegetable_pancake"
+        "recipes": "rusticpancakes:vegetable_pancakes_from_vegetable_pancake"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

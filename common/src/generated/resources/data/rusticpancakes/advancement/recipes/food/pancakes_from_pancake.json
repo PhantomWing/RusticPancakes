@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:pancakes_from_pancake"
+        "recipes": "rusticpancakes:pancakes_from_pancake"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

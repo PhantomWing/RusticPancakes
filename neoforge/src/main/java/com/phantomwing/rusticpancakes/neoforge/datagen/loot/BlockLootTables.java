@@ -5,8 +5,8 @@ import com.phantomwing.rusticpancakes.block.custom.PancakeBlock;
 import com.phantomwing.rusticpancakes.item.ModItems;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -16,7 +16,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Set;
 
 public class BlockLootTables extends BlockLootSubProvider {
-    public BlockLootTables(HolderLookup.Provider lookupProvider) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
+    public BlockLootTables(LootTableSubProvider.Context context) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), context);
     }
 
     // Actually add our loot tables.
@@ -73,7 +73,7 @@ public class BlockLootTables extends BlockLootSubProvider {
                     .when(servingsIs(block, servings))
                     .add(LootItem.lootTableItem(pancakeItem)
                             .apply(SetItemCountFunction.setCount(
-                                    ConstantValue.exactly(PancakeBlock.pancakesPresentFor(servings))))));
+                                    ContextIntProviders.exactly(PancakeBlock.pancakesPresentFor(servings))))));
         }
 
         // The plate is only left over once the stack is no longer a whole crafted block.
@@ -84,9 +84,8 @@ public class BlockLootTables extends BlockLootSubProvider {
         return this.applyExplosionDecay(block, lootTable);
     }
 
-    private static LootItemCondition.Builder servingsIs(Block block, int servings) {
-        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-                .setProperties(StatePropertiesPredicate.Builder.properties()
-                        .hasProperty(PancakeBlock.SERVINGS, servings));
+    private LootItemCondition.Builder servingsIs(Block block, int servings) {
+        return MatchBlock.blockMatches(this.blocks, block, StatePropertiesPredicate.Builder.properties()
+                .hasProperty(PancakeBlock.SERVINGS, servings));
     }
 }

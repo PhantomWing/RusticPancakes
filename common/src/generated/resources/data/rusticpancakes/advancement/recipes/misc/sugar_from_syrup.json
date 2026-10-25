@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "rusticpancakes:sugar_from_syrup"
+        "recipes": "rusticpancakes:sugar_from_syrup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -108,7 +109,8 @@ public class PancakeBlock extends Block {
         if (!level.isClientSide()) {
             ItemStack serving = this.getServingItem();
             if (!player.getInventory().add(serving)) {
-                player.drop(serving, false);
+                // The client swung for the click already, so only other players are shown the swing.
+                player.drop(serving, false, Prediction.PREDICTED);
             }
         }
 

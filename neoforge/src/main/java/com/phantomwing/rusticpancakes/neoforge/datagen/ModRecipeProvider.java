@@ -5,9 +5,13 @@ import com.phantomwing.rusticpancakes.block.custom.PancakeBlock;
 import com.phantomwing.rusticpancakes.item.ModItems;
 import com.phantomwing.rusticpancakes.tags.CommonTags;
 import com.phantomwing.rusticpancakes.tags.ModTags;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.MultiRegistryBootstrap;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
@@ -16,28 +20,26 @@ import net.neoforged.neoforge.common.Tags;
 import dev.architectury.registry.registries.RegistrySupplier;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.concurrent.CompletableFuture;
+import java.util.Set;
 
 public class ModRecipeProvider extends RecipeProvider {
-    protected ModRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
-        super(registries, output);
+    protected ModRecipeProvider(BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
+        super(recipes, advancements);
     }
 
-    /** What the data generator registers: it makes the provider once the registries are there. */
-    public static final class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-            super(output, lookupProvider);
-        }
+    /** What the data generator registers: recipes are a registry, and each recipe brings its unlock advancement. */
+    public static MultiRegistryBootstrap create() {
+        return new MultiRegistryBootstrap() {
+            @Override
+            public Set<ResourceKey<? extends Registry<?>>> requestedRegistries() {
+                return Set.of(Registries.RECIPE, Registries.ADVANCEMENT);
+            }
 
-        @Override
-        protected @NotNull RecipeProvider createRecipeProvider(@NotNull HolderLookup.Provider registries, @NotNull RecipeOutput output) {
-            return new ModRecipeProvider(registries, output);
-        }
-
-        @Override
-        public @NotNull String getName() {
-            return "Rustic Pancakes recipes";
-        }
+            @Override
+            public void run(BootstrapGetter getter) {
+                new ModRecipeProvider(getter.get(Registries.RECIPE), getter.get(Registries.ADVANCEMENT)).buildRecipes();
+            }
+        };
     }
 
     @Override
